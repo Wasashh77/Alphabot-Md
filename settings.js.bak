@@ -24,12 +24,12 @@ global.sewabotnya = `
 edit sewabot di file settings.js line 24
 `
 // setting 
-global.firtsChat = false //send firts message to new user
-global.autoread = false // auto read message
+global.firtsChat = true //send firts message to new user
+global.autoread = true // auto read message
 global.antidelete = false // anti delete
-global.antiviewonce = false // anti view once
+global.antiviewonce = true // anti view once
 global.autobio = false //auto ganti bio
-global.anticall = false //anti call, jika true maka org yg nelpon bot auto di blokir
+global.anticall = true //anti call, jika true maka org yg nelpon bot auto di blokir
 global.userRegister = false
 global.autoblok212 = false //ubah jadi true biar nmr 212 di blok sama bot
 global.autolevelup = true
@@ -39,33 +39,33 @@ global.auto_badword = false //jika true, bot (admin) otomatis menghapus pesan & 
 global.auto_badword2 = true  //jika true, bot (admin) otomatis menghapus pesan member yang mengirim kata kasar
 global.auto_antiwame = false  //jika true, bot (admin) otomatis menghapus pesan & mengeluarkan member yang mengirim link grup
 global.auto_antiwame2 = true  //jika true, bot (admin) otomatis menghapus pesan member yang mengirim link grup
-global.autowelcome = false //auto welcome msg all group
+global.autowelcome = true //auto welcome msg all group
 global.autodetectpromote = true //auto detect admin all group
 global.autodetectdemote = true //auto detect un admin all group
-global.autogoodbye = false //auto goodbye msg all group
+global.autogoodbye = true //auto goodbye msg all group
 global.groupOnly = false //bot hanya bisa di gunakan dalam grup jika true
 
 //language
 //Available in indonesia , english & spanyol 
 //You can request others language 
-global.language = english //change indonesia to english if you don't understand the language used by the bot
+global.language = indonesia //change indonesia to english if you don't understand the language used by the bot
 //global.language = english // use this for English language
 //global.language = spanyol // use this for Spanyol language
 
 // Other
 // Other
-global.botname = "NO4H-Md" //namabot kalian
-global.ownername = "Noah" //nama kalian
-global.myweb = "https://s.id/" //bebas asal jan hapus
-global.youtube = "https://youtube.com/c/@was.ash.enough" //bebas asal jan hapus
-global.myweb2 = "https://s.id" //bebas
-global.email = "zeeoneofc@" //bebas
-global.region = "Pakistan" //bebas
-global.timezone = 'Asia/Pakistan' //  timezone wib
+global.botname = "Alphabot-Mdོ" //namabot kalian
+global.ownername = "ᴹᴿ᭄ ZeeoneOfcོ ×፝֟͜×" //nama kalian
+global.myweb = "https://s.id/zeeoneofc" //bebas asal jan hapus
+global.youtube = "https://youtube.com/c/@ZeeoneOfc" //bebas asal jan hapus
+global.myweb2 = "https://s.id/zeeoneofc" //bebas
+global.email = "zeeoneofc@gmail.com" //bebas
+global.region = "Indonesia" //bebas
+global.timezone = 'Asia/Makassar' //  timezone wib
 global.premium_fitur = ["ai", "openai", "chatgpt"] //tambahin aja sendiri, soalnya gk semua org mau fiturnya premium jadi gw buat kyk gini aja, biar bisa custom fitur mana aja yang bakal di jadiin premium
 global.badword_list = ["asu", "anjir"] //tambahin sendiri kata² nya, gunakan huruf kecil
-global.premium = ['923164413714'] //premium user
-global.owner = ["923164413714", "923164413714"] //ganti agar fitur owner bisa di gunakan
+global.premium = ['62887435047326'] //premium user
+global.owner = ["62887435047326", "62887435047326"] //ganti agar fitur owner bisa di gunakan
 global.ownernomer = owner[0] + "@s.whatsapp.net"
 global.ownernomerr = "+"+ownernomer //tidak perlu di edit
 global.thumbnail = "./image/lol.jpg" // ini lol.jpg adalah nama foto di folder image. untuk foto bot
@@ -298,16 +298,16 @@ global.prefa = ['', '!', '.', '🐦', '🐤', '🗿']
 global.sp = '⭔'
 global.mess = {
    sukses: '🤗Done, Oke Desu~',
-   admin: 'You need to be admin to use this nigga !',
-   botAdmin: 'make the bot admin to continue  !',
-   owner: 'only my owner can use this cmd !',
-   group: 'you can only use this command in group !',
-   private: 'This Command Can Only Be Used In Private !',
-   bot: 'This Command Can Only Be Used In Private ',
-   errtoimg: 'Sorry, currently we do not support GIF stickers',
-   wait: '⏳ sending',
-   lockCmd: 'Feature Not Enabled By Owner!',
-   example1: 'Welcome @user to the @subject group. Welcome @user to the @subject group. Dont forget to read the rules @desc\n\nNote:\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @date (Date Now)\n4. @desc (Get Description Group)\n5. forget to read the rules @desc\n\nNote:\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @date (Date Now)\n4. @desc (Get Description Group)\n5.l'
+   admin: 'Perintah Ini Hanya Bisa Digunakan Oleh Admin !',
+   botAdmin: 'Perintah Ini Hanya Bisa Digunakan Ketika Bot Menjadi Admin !',
+   owner: 'Perintah Ini Hanya Bisa Digunakan Oleh Owner !',
+   group: 'Perintah Ini Hanya Bisa Digunakan Di Group !',
+   private: 'Perintah Ini Hanya Bisa Digunakan Di Private !',
+   bot: 'Fitur Khusus Pengguna Nomor Bot',
+   errtoimg: 'Maaf Saat Ini Belum Support Sticker Gif !',
+   wait: '⏳ Sedang Di Proses',
+   lockCmd: 'Fitur Tidak Diaktifkan Oleh Owner!',
+   example1: 'Selamat Datang @user Di Group @subject Jangan Lupa Baca Rules @desc\n\nNote :\n1. @user (Mention User Join)\n2. @bio (Get Bio User Join)\n3. @tanggal (Date Now)\n4. @desc (Get Description Group)\n5. @subject (Group Name)'
 }
 
 let file = require.resolve(__filename)
