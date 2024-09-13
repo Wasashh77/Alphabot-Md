@@ -829,18 +829,15 @@ exports.listMenu = (prefix) => {
 │○ ${prefix}primboncmd
 │○ ${prefix}telestiker
 │○ ${prefix}ephotocmd
-╰❒ ${prefix}tqto
 `
 }
 exports.listMenu2 = (prefix) => {
     return `╭─❒ 「 Bot Info 」 
 │○ ${prefix}owner
 │○ ${prefix}rules
-│○ ${prefix}sc
 │○ ${prefix}ping
 │○ ${prefix}runtime
-│○ ${prefix}botstatus
-╰❒ ${prefix}donate
+│○ ${prefix}botstatu
 
 
 ╭─❒ 「 Owner 」 
@@ -1879,9 +1876,9 @@ exports.rules = (prefix) => {
     return `
 *── 「 RULES AND FAQ 」 ──*
 
-1. Jangan spam bot. 🙅
-2. Jangan telepon bot. ☎️
-3. Jangan membandingkan bot 👍
+1. don't spam the bot. 
+2. don't call the bot. ☎️
+3. ask owner to add bot in groups 👍
 
 🗯️ Bot tidak atau lambat merespon ?
 ➡️ Mungkin dipengaruhi oleh jaringan, signal, banned oleh Whatsapp dan beberapa asalan.

@@ -1,22 +1,23 @@
-exports.onlyPrem = `Características especiales para miembros premiumCaracterísticas especiales para miembros premium`
-exports.aikey = `La clave openai api es incorrecta, cámbiela en settings.js`
-exports.DelSetWel = `Éxito en la eliminación del conjunto bienvenido en este grupo`
-exports.NoSetWel = `Todavía no hay set de bienvenida en este grupo`
-exports.DelSetLeft = `Éxito eliminar establecer adiós en este grupo`
-exports.NoSetLeft = `Todavía no hay un adiós establecido en este grupo.`
-exports.doneSet = `ha sido cambiado antes`
-exports.serverErr = `El servidor está caído`
-exports.kodeErr = `Código de idioma incorrecto, verifíquelo con el comando .codelanguage`
+//I only use google translate, so if there is an error please correct it 
+exports.onlyPrem = `Special features for premium users`
+exports.aikey = `openai api key is wrong, please change it in settings.js`
+exports.DelSetWel = `Success delete set welcome in this group`
+exports.NoSetWel = `There is no welcome set in this group yet`
+exports.DelSetLeft = `Success delete set goodbye in this group`
+exports.NoSetLeft = `There is no set goodbye yet in this group`
+exports.doneSet = `It's been changed before`
+exports.serverErr = `Server is down!`
+exports.kodeErr = `Incorrect language code, please check using the .codelanguage command`
 exports.Tts = (prefix, command) => {
-    return `Ejemplo :
+    return `Example :
 
-1. Enviar comando ${prefix + comando} *código de idioma* *texto*
-	• Ejemplo: ${prefix + comando} id hola
-2. Responder al chat con el título ${prefix + comando} *código de idioma*
-	• Ejemplo: ${prefix + comando} id
-Lista de idiomas admitidos ${prefix}languagecode`
+1. Send command ${prefix + command} *language code* *text*
+	• Example : ${prefix + command} id Hello
+2. Reply chat with caption ${prefix + command} *language code*
+	• Example : ${prefix + command} id
+List of language​supported ${prefix}languagecode`
 }
-exports.langkode = `*「 CÓDIGO DE LENGUAJE 」*
+exports.langkode = `*「 LANGUAGE CODE 」*
 af : Afrikaans
 sq : Albanian
 ar : Arab
@@ -69,49 +70,54 @@ tr : Turkish
 vi : Vietnamese
 cy : Welsh`
 exports.limitLu = (m) =>{
-	return`Su límite restante : ${m} `
+	return`Your remaining limit : ${m} `
 	}
 	
 exports.addstik = (a, b) =>{
-	return`Lista ${a} con clave ${b} yes en la base de datos`
+	return`List ${a} with key ${b} already in the database`
 	}
 exports.delstik = (a, b) =>{
-	return`Lista ${a} con clave ${b} no existe en la base de datos`
+	return`List ${a} with key ${b} not in database`
 	}
-exports.profile = (username, m, about, pasangan, PhoneNumber, exp, min, xp, math, prefix, level, role, limit, registered, tanggal__, regTime,premium, msToDate , premiumDate, now, lastclaim) =>{
-	return`📛 Nombre: ${username} (@${m.sender.split`@`[0]})${about ? '\n💌 Bio: ' + about : ''}
-👨‍❤️‍👨 Estado: ${pasangan ? `Berpacaran @${pasangan.split`@`[0]}` : '-' }
-#️⃣ Número: ${PhoneNumber('+' + m.sender.replace('@s.whatsapp.net', '')).getNumber('international')}
-🔗 Enlace: https://wa.me/${m.sender.split`@`[0]}
+exports.profile = (username, m, about, pasangan, PhoneNumber, exp, min, xp, math, prefix, level, role, limit, registered, tanggal_, regTime,premium, msToDate , premiumDate, now, lastclaim) =>{
+	return`📛 Name: ${username} (@${m.sender.split`@`[0]})${about ? '\n💌 Bio: ' + about : ''}
+👨‍❤️‍👨 Status: ${pasangan ? `Berpacaran @${pasangan.split`@`[0]}` : '-' }
+#️⃣ Number: ${PhoneNumber('+' + m.sender.replace('@s.whatsapp.net', '')).getNumber('international')}
+🔗 Link: https://wa.me/${m.sender.split`@`[0]}
 🤷‍♂️ XP: Total ${exp} (${exp - min} / ${xp}) [ ${math <= 0 ? `Ready to *${prefix}levelup*` : `${math} XP left to levelup`} ]
-🎚️ Nivel: ${level}
+🎚️ Level: ${level}
 🎢 Role: ${role}
-📊 Límite: ${limit}
-®️ Registered: ${registered ? '✅ (' + tanggal__(regTime) + ')': '❌'}
-⛽ De primera calidad: ${premium ? `✅\n⏰ Prima vencida : msToDate(premiumDate - now)` : '❌'}
-🛄 Last claim: ${lastclaim > 0 ? tanggal__(lastclaim) : ''}`
+📊 Limit: ${limit}
+®️ Registered: ${registered ? '✅ (' + tanggal_(regTime) + ')': '❌'}
+⛽ Premium: ${premium ? `✅\n⏰ Expired Premium : msToDate(premiumDate - now)` : '❌'}
+🛄 Last claim: ${lastclaim > 0 ? tanggal_(lastclaim) : ''}`
 	}
-
 
 exports.needReg = (a, b, c) =>{
 	return`🇲🇨 Daftar dulu bang
 
 Gini : #daftar nama|umur|gender|hobi
+
 Contoh : #daftar ${a}|18|cowo|Game
+
+
 
 🇺🇲 Please register first
 
+
+
 Like this : #register name|age|gender|hobby
+
 Example : #register ${a}|18|male|Games`
 }
 exports.Nolimit = (prefix) =>{
-	return`Tu límite de hoy se ha agotado ⚠️\n\nPor favor compre un límite escribiendo ${prefix}buy o ${prefix}buyall`
+	return`Your limit today has run out ⚠️\n\nPlease buy a limit by typing ${prefix}buy or ${prefix}buyall`
 	}
-exports.Noseri = () =>{
-	return`El número de serie (sn) es incorrecto\n.ceksn -- _check serial number_`
+exports.i = () =>{
+	return`The serial number (sn) is wrong\n.ceksn -- _check serial number_`
 	}
 exports.NoseriOk = () =>{
-	return`Cancelar correctamente el registro!`
+	return`Successfully cancel registration!`
 	}
 exports.ExReg = (c) =>{
 	return`🇲🇨 Gunakan tanda "|" sebagai pembatas
@@ -130,659 +136,664 @@ Like this : #register name|age|gender|hobby
 Example : #register ${a}|18|male|Games`
 	}
 exports.DoneReg = () =>{
-	return`Ya estás registrado en la base de datos`
+	return`You are already registered in the database`
 	}
 exports.UmurReg = () =>{
-	return`La edad debe ser un número.`
+	return`Age must be a number`
 	}
 exports.NamaReg = () =>{
-	return`Tu nombre es muy largo, solo usa tu primer nombre`
+	return`Your name is really long, just use your first name`
 	}
 exports.HobiReg = () =>{
-	return`Tienes muchas aficiones, solo 1 o 2 aficiones`
+	return`You have a lot of hobbies, just 1 or 2 hobbies`
 	}
 exports.RegReg = (a,b,c,d,e,f,g,h,i) =>{
-	return`╭─「 *VERIFICACIÓN EXITOSA* 」
-│\`\`\`Verificación exitosa con\`\`\` 
+	return`╭─「 *SUCCESSFUL VERIFICATION* 」
+│\`\`\`Verification Success With\`\`\` 
 │
 │\`\`\`SN: ${a}\`\`\`
-│\`\`\`En : ${b}\`\`\`
-│\`\`\`Nombre : ${c}\`\`\`
-│\`\`\`Años : ${d}\`\`\`
-│\`\`\`Género : ${e}\`\`\`
-│\`\`\`Número : @${f}\`\`\`
-│\`\`\`Para usar bots por favor \`\`\`
-│\`\`\`Enviar pedidos ${g}menu\`\`\`
-│\`\`\`o ${h}allmenu\`\`\`
+│\`\`\`On : ${b}\`\`\`
+│\`\`\`Name : ${c}\`\`\`
+│\`\`\`Age : ${d}\`\`\`
+│\`\`\`Gender : ${e}\`\`\`
+│\`\`\`Number : @${f}\`\`\`
+│\`\`\`To use bot Please \`\`\`
+│\`\`\`Send command ${g}menu\`\`\`
+│\`\`\`or ${h}allmenu\`\`\`
 │
 │\`\`\`\Total : ${i} Users\`\`\`
 ╰─────────────────────`
 	}
 exports.genderReg = (a) =>{
-	return`Seleccione uno ( male / female)\n\n${a}`
+	return`Select one ( male / female)\n\n${a}`
 	}
 exports.UmurXReg = () =>{
-	return`Eres muy viejo`
+	return`You are too old`
 	}
 exports.firstChat = (a, b, c) =>{
-	return`Hola ${a} ${b} 🤗, soy ${c} bots de whatsapp. Puedo ayudarte?`
+	return`Hi ${a} ${b} 🤗, I am ${c} whatsapp bots. Can i help u?`
 	}
+
 exports.AddstikOk = (q, a, b, prefix, command) =>{
-	return`Se agregó correctamente ${q} a la base de datos ${a}\n\nCorregido por ${prefix}${b}`
+	return`Success Add ${q} Into Database ${a}\n\nCheck with command ${prefix}${b}`
 	}
-	
-exports.AddstikOk_ = (a,b) =>{
-	return`La duración de ${a} segundos, que es la duración máxima de ${b} que el bot puede guardar en la base de datos`
-	}
+
 exports.Addvn = () =>{
-	return`Espera un minuto, intentaré subir este medio a la base de datos.`
+	return`Wait a minute, I will try to upload this media to the database`
 	}
-	
+
+exports.AddstikOk_ = (a, b) =>{
+	return`The duration is ${a} seconds, which is the maximum ${b} duration that bots can save into the database`
+	}
+
 exports.ListStik = (a) =>{
-	return`Para tomar ${a}, envíe un mensaje de acuerdo con la lista de ${a} anterior`
+	return`_To take ${a} please send a message according to the list of ${a} the one above_`
 	}
+
+
 exports.noAbsen = () =>{
-return `❌ ¡No hay ausencias en este grupo!\n.absen -- mulai absen`
+return `❌ No absences take place in this group!\n.absen -- start absen`
 }
 exports.StartAbsen = () =>{
-	return`Empezar ausente`
+	return`Start Absence`
 	}
 exports.DahAbsen = () =>{
-	return`estas ausente`
+	return`You're absent`
 	}
 exports.DelAbsen = () =>{
-	return`✅ Ausencias eliminadas con éxito en este grupo`
+	return`✅ Successfully deleted absences in this group`
 	}
 exports.adaAbsen = () =>{
-	return`Todavía hay sesiones ausentes en este grupo !`
+	return`There are still absent sessions in this group!`
 	}
 exports.SAbsen = () =>{
-	return`Comienza la ausencia`
+	return`Absence begins`
 	}
 //
 exports.SetCmd = (prefix, command) =>{
-	return`¡Pegatinas de respuesta!\nEjemplo : ${prefix + command} .menu\n\n\n*Nota: Debe ir acompañado de prefix!!*`
+	return`Reply stiker!!\nExample : ${prefix + command} .menu\n\n\n*Note : Must be accompanied by a Prefix!!*`
 	}
 exports.CmdApa = () =>{
-	return`¿Para qué comandos?`
+	return`For What Command?`
 	}
 exports.UCmd = () =>{
-	return`No tienes permiso para modificar este pedido de pegatinas.`
+	return`You don't have permission to modify this sticker order`
 	}
 exports.HashCmd = () =>{
-	return`sin hashes`
+	return`No hashes`
 	}
 exports.DelCmd = () =>{
-	return`✅ Se eliminó la etiqueta cmd`
+	return`✅ The cmd sticker has been removed`
 	}
 exports.LockCmd = () =>{
-	return`Mensaje de respuesta`
+	return`Reply message`
 	}
 exports.NoCmd = () =>{
-	return`Hash no encontrado en la base de datos`
+	return`Hash not found in database`
 	}
 exports.ReplyMsg = () =>{
-	return`Mensaje de respuesta que desea guardar en la base de datos`
+	return`Reply Message You Want To Save In Database`
 	}
 exports.NoMsg = (prefix, command) =>{
-	return`Ejemplo : ${prefix + command} Nombre del archivo`
+	return`Example : ${prefix + command} filename`
 	}
 exports.AdMsg = (text) => {
-    return `'${text}' registrado en la lista de mensajes`
+    return `'${text}' has been registered in the message list`
 }
 exports.DoneMsg = (prefix, text) => {
-    return `Mensaje agregado con éxito en la lista de mensajes como '${text}'
+    return `Successfully added message in message list as '${text}'
     
-Acceso con ${prefix}getmsg ${text}
-Ver lista de mensajes con ${prefix}listmsg`
+Access with ${prefix}getmsg ${text}
+View list of Messages With ${prefix}listmsg`
 }
 exports.GetMsg = (prefix, command) => {
-    return `Ejemplo : ${prefix + command} file name\n\nVer lista de mensajes con ${prefix}listmsg`
+    return `Example : ${prefix + command} file name\n\nView message list with ${prefix}listmsg`
 }
 exports.NoInMsg = (text) => {
-    return `'${text}' no aparece en la lista de mensajes`
+    return `'${text}' not listed in the message list`
 }
 exports.DelMsg = (text) => {
-    return `Se eliminó con éxito '${text}' de la lista de mensajes`
+    return `Delete successfully '${text}' from the message list`
 }
 
 exports.OnBef = () => {
-    return `Ha sido activado antes`
+    return `It's been activated before`
 }
 exports.OffYaBef = () => {
-    return `Ha sido desactivado antes`
+    return `It's been deactivated before`
 }
 exports.OkOn = (command) => {
-    return `${command} ¡Activado con éxito!`
+    return `${command} Successfully Activated !`
 }
 exports.OffBef = (command) => {
-    return `${command} ¡Deshabilitado con éxito!`
+    return `${command} Successfully Deactivated !`
 }
 exports.OkMute = () => {
-    return `El bot ha sido silenciado en este grupo`
+    return `Bot has been muted in this group`
 }
 exports.OkUnMute = () => {
-    return `Bot tuvo éxito en UnMute`
+    return `Bot Succeeded In UnMute`
 }
 exports.OkUnBanC = () => {
-    return `El bot desbaneó con éxito el chat`
+    return `Bot Successfully Unban chat`
 }
 exports.NoMute = () => {
-    return `El bot no ha sido baneado en este grupo`
+    return `Bot has not been banned in this group`
 }
 
 exports.NoMsgBot = () => {
-    return `¡El mensaje no fue enviado por un bot!`
+    return `The message was not sent by a bot!`
 }
 exports.ToimgErr = () => {
-    return `Lo siento, actualmente no es compatible con Gif Pegatina`
+    return `Sorry Currently Not Support Gif Sticker`
 }
 exports.NoToImg = (prefix, command) => {
-    return `Pegatina de respuesta con subtítulo *${prefix + command}*`
+    return `Reply Sticker With Caption *${prefix + command}*`
 }
 exports.BotPublic = () => {
-    return `Cambio exitoso al modo público`
+    return `Success Change To Public Mode`
 }
 exports.BotSelf = () => {
-    return `Cambio exitoso al modo propio\n\nPara cambiar al modo público, use el número de bot`
+    return `Successfully Change To Self Mode\n\nTo change to public mode, please use the bot number`
 }
 exports.NoToStik = (prefix, command) => {
-    return `Enviar/Responder imagen/video con subtítulo ${prefix + command}\n\nDuración de la etiqueta de video 1-9 segundos`
+    return `Send/Reply Image/Video With Caption ${prefix + command}\n\nVideo Sticker Duration 1-9 Seconds`
 }
 exports.NoPpBot = (prefix, command) => {
-    return `Enviar/Responder imagen con título ${prefix + command}`
+    return `Send/Reply Image With Caption ${prefix + command}`
 }
 exports.ToAud = (prefix, command) => {
-    return `Enviar/responder video/audio que desea usar como audio con subtítulos ${prefix + command}`
+    return `Send/Reply the Video/Audio You Want to Use as Audio With Caption ${prefix + command}`
 }
 exports.ToMp3 = (prefix, command) => {
-    return `Enviar/responder video/audio que desea convertir a MP3 con subtítulos ${prefix + command}`
+    return `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
 }
 exports.ToVn= (prefix, command) => {
-    return `Responder video/audio que desea ser VN con subtítulos ${prefix + command}`
+    return `Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`
 }
 exports.NoQouted = () => {
-    return `El mensaje al que respondió no contiene una respuesta`
+    return `The message you replied to does not contain a reply`
 }
 exports.SetGcName = (prefix, command) => {
-    return `Enviar comando ${prefix + command} *texto*`
+    return `Send command ${prefix + command} *text*`
 }
 exports.SetPpGc = (prefix, command) => {
-    return `Enviar/Responder imagen con título ${prefix + command}`
+    return `Send/Reply Image With Caption ${prefix + command}`
 }
 exports.JoinGc = () => {
-    return `Introduce el enlace del grupo!`
+    return `Enter the group link!`
 }
 exports.MauKick = () => {
-    return `Envía el número objetivo/etiqueta/respuesta que quieres patear !`
+    return `Send the target number/tag/reply you want to kick!`
 }
 exports.MauAdd = () => {
-    return `¡Envíe el número objetivo/etiqueta/respuesta que desea agregar!`
+    return `Send the target number/tag/reply you want to add!`
 }
 exports.NakPm= () => {
-    return `¡Envíe el número objetivo/etiqueta/respuesta que desea promocionar!`
+    return `Send the target number/tag/reply you want to promote!`
 }
 exports.NakDm = () => {
-    return `¡Envíe el número objetivo/etiqueta/respuesta que desea degradar!`
+    return `Send the target number/tag/reply you want to demote!`
 }
 exports.Family = () => {
-    return `¡Esta pregunta no ha terminado!`
+    return `This question is not finished!`
 }
 exports.NoWm = (prefix, command) => {
-    return `Enviar comando ${prefix + command} packname|author`
+    return `Send command ${prefix + command} packname|author`
 }
 exports.DoneExif = (packname, author) => {
-    return `Exif convertido con éxito a\n\nPackname : ${packname}\nAuthor : ${author}`
+    return `Exif Successfully Converted To\n\nPackname : ${packname}\nAuthor : ${author}`
 }
 exports.NoTeksOne = (prefix, command) => {
-    return `Enviar comando ${prefix + command} *texto*\n\nEjemplo : ${prefix + command} Robot de Whatsapp`
+    return `Send command ${prefix + command} *teks*\n\nExample : ${prefix + command} WhatsApp Bot`
 }
 exports.NoTeksTwo = (prefix, command) => {
-    return `Enviar comando ${prefix + command} *texto 1|texto 2*\n\nEjemplo : ${prefix + command} WhatsApp|bot`
+    return `Send command ${prefix + command} *teks 1|teks 2*\n\nExample : ${prefix + command} WhatsApp|Bot`
 }
 exports.OffNsfw = () => {
-    return `Fitur nsfw belum di aktifkan`
+    return `The nsfw feature has not been activated`
 }
 exports.CoverBanLol = (prefix, command) => {
-    return `Ejemplo: ${prefix + command} nombre|heroes\nEjemplo: ${prefix + command} zeeone|jinx7`
+    return `Example : ${prefix + command} nama|heroes\nUsage: ${prefix + command} zeeone|jinx7`
 }
 exports.coverbannerlol = (style) => {
-    return `*Los héroes que ingresaste están equivocados*\n\n_Aquí hay una lista de los héroes correctos, Total_ *${style}* _heroes_\n\n`
+    return `*The Heroes You Entered are Wrong*\n\n_Here's the list of true heroes, Total_ *${style}* _heroes_\n\n`
 }
 exports.pubglogomaker = (prefix, command) => {
-    return `Ejemplo: ${prefix + command} nombre|style\n Ejemplo: ${prefix + command} zeeone|women`
+    return `Example : ${prefix + command} nama|style\nUsage: ${prefix + command} zeeone|women`
 }
 exports.pubglogomaker_ = (style) => {
-    return `*El estilo que ingresaste es incorrecto*\n\n_Aquí hay una lista de los estilos correctos, Total_ *${style}* _style_\n\n`
+    return `*The style you entered is wrong*\n\n_Here's a list of the correct styles, Total_ *${style}* _style_\n\n`
 }
 exports.colorfulpubg = (prefix, command) => {
-    return `Ejemplo: ${prefix + command} nombre|color\nEjemplo: ${prefix + command} zeeone|gold`
+    return `Example : ${prefix + command} nama|color\nUsage: ${prefix + command} zeeone|gold`
 }
 exports.colorfulpubg_ = (style) => {
-    return `*El color que ingresaste es incorrecto*\n\n_Aquí hay una lista de los colores correctos, Total_ *${style}* _color_\n\n`
+    return `*The color you entered is wrong*\n\n_Here's a list of the correct colors, Total_ *${style}* _color_\n\n`
 }
 exports.astronotspace = (prefix, command) => {
-    return `Ejemplo: ${prefix + command} nombre|style\nEjemplos de uso: ${prefix + command} zeeone|anubis`
+    return `Example: ${prefix + command} nama|style\nUsage: ${prefix + command} zeeone|anubis`
 }
 exports.wallpaperaov = (prefix, command) => {
-    return `Ejemplo: ${prefix + command} nombre|heroes\nEjemplos de uso: ${prefix + command} zeeone|allain`
+    return `Example: ${prefix + command} nama|heroes\nUsage: ${prefix + command} zeeone|allain`
 }
 exports.maketeamlogo = (style, style2, prefix, command) => {
-    return `Ejemplo: ${prefix + command} nombre|${style}\nEjemplos de uso: ${prefix + command} zeeone|${style2}`
+    return `Example: ${prefix + command} nama|${style}\nUsage: ${prefix + command} zeeone|${style2}`
 }
 
 exports.MaketeamlogoT = (a, b, c, d, e, f, g, h) => {
-    return `Ejemplo: ${g + h} ${a}|${b}|${c}\nEjemplos de uso: ${g + h} ${e}|${f}|${d}`
+    return `Example : ${g + h} ${a}|${b}|${c}\nUsage: ${g + h} ${e}|${f}|${d}`
 }
 exports.maketeamlogo_ = (style, style2) => {
-    return `*${style2} lo que ingresaste esta mal*\n\n_Aquí hay una lista ${style2} Así es, total_ *${style}* _${style2}_\n\n`
+    return `*${style2} What you entered is wrong*\n\n_Here's a List ${style2} Correct, Total_ *${style}* _${style2}_\n\n`
 }
 
 exports.KisahNabi = (prefix, command, style, style2 = "query") => {
-    return `Enviar pedidos: \n${prefix + command} ${style2}\n\nEjemplos de uso:\n${prefix + command} ${style}`
+    return `Send orders: \n${prefix + command} ${style2}\n\nExamples of use:\n${prefix + command} ${style}`
 }
 exports.quran2 = (prefix, command, juz , brp) => {
-    return `Ejemplo : ${prefix + command} ${juz}\nEjemplos de uso: ${prefix + command} ${brp}`
+    return `Example : ${prefix + command} ${juz}\nUsage: ${prefix + command} ${brp}`
 }
 
 exports.quran3 = (prefix, command, surah , ayat, brp, brp2) => {
-return`Ejemplo : ${prefix + command} ${surah}|${ayat}\nEjemplos de uso: ${prefix + command} ${brp}|${brp2}`
+return`Example : ${prefix + command} ${surah}|${ayat}\nUsage: ${prefix + command} ${brp}|${brp2}`
 }
 
 exports.JwbErr = () => {
-    return `❌ Respuesta incorrecta`
+    return `❌ Wrong answer`
 }
 
 exports.JwbTrue = (tebak, exp) => {
-return`🎮 ${tebak} 🎮\n\nRespuesta correcta 🎉\n+${exp} XP`
+return`🎮 ${tebak} 🎮\n\nCorrect answer 🎉\n+${exp} XP`
 }
 exports.TbGam = () => {
-    return `Adivina la foto`
+    return `Guess the picture`
 }
 exports.TbKa = () => {
-    return `Adivina la palabra`
+    return `Guess the word`
 }
 exports.TbBe = () => {
-    return `Adivina la bandera`
+    return `Guess the Flag`
 }
 exports.TbCak = () => {
     return `Cak Lontong`
 }
 exports.TbSu = () => {
-    return `Organizar palabras`
+    return `Arrange Words`
 }
 exports.TbAt = () => {
-    return `Adivina la frase`
+    return `Guess the Sentence`
 }
 exports.TbSi = () => {
-    return `Adivina quién`
+    return `Guess who`
 }
 exports.Tbte = () => {
-    return `Rompecabezas`
+    return `Teka Teki`
 }
 exports.TbEn = () => {
-    return `Adivina el Distrito`
+    return `Guess the District`
 }
 exports.TbKi = () => {
-    return `Supongo que la química`
+    return `Guess Chemistry`
 }
 exports.TbLi = () => {
-    return `Adivina la letra`
+    return `Guess the Lyrics`
 }
 exports.TbKan = () => {
-    return `Adivinanzas`
+    return `Riddles`
 }
 
 exports.TbFamily = (soal, jawaban, find) => {
-    return `*Responde las siguientes preguntas :*\n${soal}\n\nHay *${jawaban}* Responder ${find}`
+    return `*Answer the following questions :*\n${soal}\n\nThere is *${jawaban}* Answer ${find}`
 }
 
 exports.TbAfk = (nama, afk) => {
-    return `${nama} tiene afk con razon ${afk ? ': ' + afk : 'Nada'}`
+    return `${nama} Has Afk With Reason ${afk ? ': ' + afk : 'Nothing'}`
 }
 
 exports.TbGambar = (desk, time, exp) => {
-    return `Por favor responda la pregunta anterior\n\nDescripción : ${desk}\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `Please answer the questions above\n\nDescription : ${desk}\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbGambar_ = (jawaban) => {
-    return `Tiempo de espera\nRespuesta:  ${jawaban}`
+    return `Time has run out\nAnswer:  ${jawaban}`
 }
 exports.TbGambar__ = (jawaban, desk) => {
-    return `Tiempo de espera\nRespuesta:  ${jawaban}}\nDescripción : ${desk}`
+    return `Time has run out\nAnswer:  ${jawaban}}\nDescription : ${desk}`
 }
 exports.TbKata = (soal, time, exp) => {
-    return `Por favor, conteste a las siguientes preguntas\n\n${soal}\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `Please Answer The Following Questions\n\n${soal}\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbBendera = (time, exp) => {
-    return `Por favor responda la pregunta anterior\n\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `Please Answer The Question Above\n\nWaktu : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbKabupaten = (time, exp) => {
-    return `La imagen de arriba es una imagen del distrito.?\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `The picture above is a picture of the district?\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbKimia = (soal, time, exp) => {
-    return `que significa el simbolo : *${soal}*?\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `What does the symbol mean? : *${soal}*?\nWaktu : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbLirik = (soal, time, exp) => {
-    return `esta es la letra de la cancion? : *${soal}*?\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `These are the lyrics of the song? : *${soal}*?\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbSusun = (soal, tipe, time, exp) => {
-    return `*Responde las siguientes preguntas :*\nPregunta : ${soal}\nEscribe : ${tipe}\nTiempo : ${time} segundos\nRecompensas : ${exp} XP`
+    return `*Answer the following questions :*\nQuestion : ${soal}\nType : ${tipe}\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbMath = (modes, prefix, command) => {
-    return `Modo: ${modes}\nEjemplos de uso: ${prefix + command} medium`
+    return `Mode: ${modes}\nUsage examples: ${prefix + command} medium`
 }
 exports.TbMath_ = (soal, time) => {
-    return `*¿Cuál es el resultado de: ${soal}*?\n\nTiempo: ${time} segundo`
+    return `*What is the result of: ${soal}*?\n\nTime: ${time} detik`
 }
 exports.TbJail = (prefix, command) => {
-    return `Enviar/responder foto/pegatina con leyenda ${prefix + command}`
+    return `Send/Reply Photo/Sticker With Caption ${prefix + command}`
 }
 exports.TbRepo = (prefix, command) => {
-    return `Enviar comando ${prefix + command} *user* *repo* *branch*\n\nEjemplos de uso: ${prefix + command} *zeeone-ofc* *Alphabot-Md* *v12*`
+    return `Send command ${prefix + command} *user* *repo* *branch*\n\nExp. ${prefix + command} *zeeone-ofc* *Alphabot-Md* *v12*`
 }
 exports.StalkIg = () => {
-    return `Introduzca su nombre de usuario`
+    return `Enter username`
 }
 exports.Tomp4 = (prefix, command) => {
-    return `Responder pegatina gif con subtítulo ${prefix + command}`
+    return `Reply gif sticker with caption ${prefix + command}`
 }
 exports.Tourl = (prefix, command) => {
-    return `Enviar/Responder medios con subtítulos ${prefix + command}`
+    return `Send/Reply Media With Caption ${prefix + command}`
 }
 exports.Smeme = (prefix, command) => {
-    return `Enviar/Responder foto con leyenda ${prefix + command} *teks*`
+    return `Send/Reply Photo With Caption ${prefix + command} *teks*`
 }
 exports.Smeme_ = (prefix, command) => {
-    return `Enviar/Responder foto con leyenda ${prefix + command} *teks|tesk2*`
+    return `Send/Reply Photo With Caption ${prefix + command} *teks|tesk2*`
 }
 exports.Bcall = (anu, time, chat) => {
-    return `Enviar difusión a ${anu} ${chat}\nSe acabó el tiempo ${time * 1.5} detik`
+    return `Send Broadcast To ${anu} ${chat}\nTime's up ${time * 1.5} detik`
 }
 exports.Stag = (prefix, command) => {
-    return `Pegatina de respuesta con subtítulo ${prefix + command}`
+    return `Reply sticker with caption ${prefix + command}`
 }
 exports.Vtag = (prefix, command, video) => {
-    return `Enviar respuesta ${video} con subtítulo ${prefix + command}`
+    return `Send/reply ${video} with caption ${prefix + command}`
 }
 exports.TrLate = (prefix, command) => {
-    return `Ejemplo :
+    return `Example :
 
-1. Enviar pedidos ${prefix + command} *Código de lenguaje* *texto*
-	• Ejemplo : ${prefix + command} id Hola
-2. Reply chat dengan caption ${prefix + command} *Código de lenguaje*
-	• Ejemplo : ${prefix + command} id Hola
-Lista de idiomas admitidos : https://cloud.google.com/translate/docs/languages`
+1. Send command ${prefix + command} *language code* *teks*
+	• Example : ${prefix + command} id hi
+2. Reply chat with caption ${prefix + command} *language code*
+	• Example : ${prefix + command} id hi
+List of supported languages : https://cloud.google.com/translate/docs/languages`
 }
 exports.Addlist = () => {
-    return `La clave no puede ser la misma que el bot de función/comando`
+    return `Key cannot be the same as feature/command bot`
 }
 exports.Addlist_ = (prefix, command) => {
-    return `Úsalo de una manera ${prefix + command} *key|response*\n\n_Ejemplo_\n\n${prefix + command} Hi|Halo`
+    return `Use it in a way ${prefix + command} *key|response*\n\n_Example_\n\n${prefix + command} Hi|Halo`
 }
 exports.Addlist__ = (arg) => {
-    return `Lista de respuesta con clave : *${arg}* ya en este grupo.`
+    return `List of responses with key : *${arg}* already in this group.`
 }
 exports.AddlistDone = (arg) => {
-    return `Establecer correctamente el mensaje de la lista con la clave : *${arg}*\n\nNota: Espere unos minutos si la lista no cambia`
+    return `Successfully set list message with key : *${arg}*\n\nNote : Wait a few minutes if the list doesn't change`
 }
 exports.Dellist = () => {
-    return `No hay lista de mensajes en la base de datos.`
+    return `There is no message list in the database`
 }
 exports.Dellist_  = (prefix, command) => {
-    return `Úsalo de una manera ${prefix + command} *key*\n\n_Ejemplo_\n\n${prefix + command} Hi`
+    return `Use it in a way ${prefix + command} *key*\n\n_Example_\n\n${prefix + command} Hi`
 }
 exports.Dellist__ = (key) => {
-    return `Lista de respuesta con clave *${key}* no está en la base de datos!`
+    return `List response with key *${key}* not in database!`
 }
 exports.DellistDone = (key) => {
-    return `Eliminar correctamente el mensaje de la lista con la clave *${key}*`
+    return `Successfully delete list message with key *${key}*`
 }
 exports.ListUp = (key) => {
-    return `perdon por la llave *${key}* no registrado en este grupo`
+    return `Sorry, the key *${key}* is not yet registered in this group`
 }
 exports.UpList = (key) => {
-    return `Actualizar correctamente el mensaje de la lista con la clave : *${key}*\n\nNota: Espere unos minutos si la lista no cambia`
+    return `Successfully update list message with key : *${key}*\n\nNote : Wait a few minutes if the list doesn't change`
 }
 exports.Anonymous = (pushname, prefix) => {
-    return `Hola ${pushname} Bienvenido al chat anónimo\n\nEscribe ${prefix}start para encontrar a sus amigos de chat, o puede presionar el botón Buscar a continuación`
+    return `Hi ${pushname} Welcome to Anonymous Chat\n\nType ${prefix}start to find your Chat Friend, or you can press the Search button below`
 }
 exports.Anon = () => {
-    return `Buscar chat de amigos`
+    return `Find Friends Chat`
 }
 exports.StopAnon = (prefix) => {
-    return `No estás en una sesión anónima\n${prefix}start -- _cari pasangan baru_`
+    return `You are not in an anonymous session\n${prefix}start -- _cari pasangan baru_`
 }
 exports.AnonNew = () => {
-    return `Encontrar nuevos amigos`
+    return `Find New Friends`
 }
 exports.AnonDahStop = (prefix) => {
-    return `✅ Chat detenido con éxito\n${prefix}start -- _cari pasangan baru_`
+    return `✅ Successfully stopped chat\n${prefix}start -- _cari pasangan baru_`
 }
 exports.StopAnonByFren = (prefix) => {
-    return `⚠️ Esta sesión de chat ha sido cancelada por su amigo de chat\n${prefix}start -- _cari pasangan baru_`
+    return `⚠️ This chat session has been terminated by your chat friend\n${prefix}start -- _cari pasangan baru_`
 }
 exports.AnonOn = (prefix) => {
-    return `⚠️ ¡Aún estás en una sesión de chat con un compañero!\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan dialog ini_`
+    return `️ You are still in a chat session with a partner\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan dialog ini_!`
 }
 exports.AnonFind = (prefix) => {
-    return `_pareja encontrada 🐼_\n${prefix}skip -- _buscando un nuevo socio_\n${prefix}stop -- _detener este diálogo_`
+    return `_Partner Found 🐼_\n${prefix}skip -- _find a new partner_\n${prefix}stop -- _stop this dialog_`
 }
 exports.AnonSearch = (prefix) => {
-    return `🔎 Por favor espera buscando amigos de chat\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan percarian ini_`
+    return `🔎 Please wait looking for chat friends\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan percarian ini_`
 }
 exports.NoAnon = (prefix) => {
-    return `⚠️ Nunca has iniciado un chat.!\n${prefix}start -- _cari pasangan baru_`
+    return `⚠️ You've never started a chat!\n${prefix}start -- _cari pasangan baru_`
 }
 exports.NoAudRep = (prefix, command) => {
-    return `Responda al audio que desea cambiar con un título *${prefix + command}*`
+    return `Reply to the audio you want to change with caption *${prefix + command}*`
+}
+exports.NoTagBan = () => {
+    return `Usage examples :\n${prefix + command} 62938828728992 \nor\n${prefix + command} @tagmember`
 }
 
-exports.NoTagBan = (prefix, command) => {
-    return `Ejemplo :\n${prefix + command} 62938828728992 \no\n${prefix + command} @tagmember`
-}
 exports.getBan = (a) => {
-    return `⚠️ Lo sentimos, su número ha sido prohibido por el propietario\n\ndueño del bot 👇\nwa.me/${a}`
+    return `⚠️ Sorry, your number has been banned by the owner\n\nOwner 👇\nwa.me/${a}`
 }
 exports.Addstik = (prefix, command, t) => {
-    return `respuesta ${t} con subtítulo ${prefix + command} texto\n\nEjemplo : ${prefix + command} bot`
+    return `Reply ${t} with caption ${prefix + command} text\n\nExample : ${prefix + command} bot`
 }
+
 exports.AllFitur = () => {
-    return `\n_Todas las características de los bots_`
+    return `\nAll bot features`
 }
 exports.InfoMenu = () => {
-    return `\n_Buscando la información más reciente a través de bot_`
+    return `\n_Looking for the latest information via bot_`
 }
 exports.KhususOwn = () => {
-    return `\n_Características especiales del bot propietario_`
+    return `\n_Owner Bots Special Features_`
 }
 exports.DataBor = () => {
-    return `\n_Almacenar algo en la base de datos del bot_`
+    return `\n_Storing something in the bot database_`
 }
 exports.MenuGc = () => {
-    return `\n_Muestra características específicas del grupo_`
+    return `\n_Show group specific features_`
 }
 exports.MenuAni = () => {
-    return `\n_Buscando fotos de anime al azar_`
+    return `\n_Looking for random anime pictures_`
 }
 exports.TagMem = () => {
-    return `\n_Miembro del grupo de etiquetas_`
+    return `\n_Tag group member_`
 }
 exports.StalkOrk = () => {
-    return `\n_Puntos de las personas en las redes sociales_`
+    return `\n_People's social media stalking_`
 }
 exports.Hoja = () => {
-    return `\n_Buscando algo sin importancia_`
+    return `\n_Looking for something unimportant_`
 }
 exports.CovertWi = () => {
-    return `\n_Convertir algo con bot_`
+    return `\n_Convert something with bot_`
 }
 exports.AnuFoto = () => {
-    return `\n_Cambia la imagen para que sea más interesante._`
+    return `\n_Change the picture to be more interesting_`
 }
 exports.HajuStik = () => {
-    return `\n_Crea pegatinas únicas_`
+    return `\n_Create unique stickers_`
 }
 exports.EloDown= () => {
-    return `\n_Mostrar función de descarga_`
+    return `\n_Show download feature_`
 }
 exports.StikerWibu = () => {
-    return `\n_pegatinas de anime al azar_`
+    return `\n_Random anime stickers_`
 }
 exports.ImageDewasa = () => {
-    return `\n_Anime de imagen aleatoria 18+_`
+    return `\n_Random image anime 18+_`
 }
 exports.MakeLogo = () => {
-    return `\n_Para crear un logo usando un bot_`
+    return `\n_To create a logo using a bot_`
 }
 exports.oterMenu = () => {
-    return `\n_Más menú_`
+    return `\n_More menu_`
 }
 exports.GameBot = () => {
-    return `\n_Funciones para jugar con bots_`
+    return `\n_Features for playing with bots_`
 }
 exports.RandRik = () => {
-    return `\n_Videos aleatorios de tiktok_`
+    return `\n_Random tiktok videos_`
 }
 exports.RandCew = () => {
-    return `\n_fotos al azar de chicas hermosas_`
+    return `\n_Random pictures of beautiful girls_`
 }
 exports.RamalOi = () => {
-    return `\n_pronóstico de hoy_`
+    return `\n_Today's forecast_`
 }
 exports.TeleStik= () => {
-    return `\n_Etiqueta aleatoria de Telegram_`
+    return `\n_Random sticker from telegram_`
 }
 exports.BuatLogoLagi = () => {
-    return `\n_Crea logotipos geniales con bots_`
+    return `\n_Create cool logos with bots_`
 }
 exports.SoundNih= () => {
-    return `\n_Sonido aleatorio_`
+    return `\n_Random sound_`
 }
 exports.KanLogoLagi = () => {
-    return `\n_Haz un logo atractivo_`
+    return `\n_Make an attractive logo_`
 }
 exports.TobatBro = () => {
-    return `\n_características islámicas_`
+    return `\n_Islamic features_`
 }
 exports.MauJualan = () => {
-    return `\n_Funciones para vender_`
+    return `\n_Features for selling_`
 }
 exports.Maustorage = () => {
-    return `\n_Fcaracterísticas para almacenar pegatinas, audio, fotos y videos_`
+    return `\n_Features to save stickers, audio, photos and videos_`
 }
 exports.MauChanger = () => {
-    return `\n_Función para cambiar el sonido de audio/vn_`
+    return `\n_Feature to change audio/vn sound_`
 }
 exports.GadaChat = () => {
-    return `\n_Funciones para chat aleatorio_`
+    return `\n_Features for random chat_`
 }
 exports.SumberBot = () => {
-    return `\n_Fuente de este script de bot_`
+    return `\n_Source of this bot script_`
 }
 exports.Tqnya = () => {
-    return `\n_Quién contribuyó a este bot_`
+    return `\n_Who contributed to this bot_`
 }
 exports.SetAh = () => {
-    return `¿Quieres un menú fijo? ?`
+    return `Do you want a set menu?`
 }
 exports.KickAh = (gc) => {
-    return `*Grupo antienlace detectado*\n\nSerás eliminado del grupo. ${gc}`
+    return `*Antilink Group Detected*\n\nYou will be removed from the group ${gc}`
     }
     exports.GjdKick = () => {
-    return `Parece que enviaste el enlace de este grupo, no serás expulsado`
+    return `Looks like you sent this group link, you won't be kicked out`
     }
 /////////
 
 /////////
 exports.private = () =>{
-	return`La función solo se puede usar en el chat privado.`
+	return`The feature can only be used in private chat`
 	}
 exports.wait = () => {
-    return `⏳ Por favor, espere un momento`
+    return `⏳ Please wait a moment`
 }
 exports.ok = () => {
-    return `✅ hecho.`
+    return `✅ Done.`
 }
 
 exports.err = () => {
-    return `⚠️ Características de error moderado`
+    return `⚠️ Error Moderate Features`
 }
 exports.erorLink = () => {
-    return `⚠️ el enlace es un error`
+    return `⚠️ The link is error`
 }
 exports.media = () => {
-    return `Seleccione los medios que desea descargar`
+    return `Please select the media you want to download`
 }
 exports.replyImg = (prefix, command) => {
-    return `Enviar/Responder foto con leyenda ${prefix + command}`
+    return `Send/Reply Photo With Caption ${prefix + command}`
 }
 
 exports.wrongFormat = (prefix) => {
-    return `Formato incorrecto Por favor verifique cómo usar en *${prefix}allmenu*.`
+    return `Incorrect format Please check how to use at *${prefix}allmenu*.`
 }
 
 exports.emptyMess = () => {
-    return `❎ Por favor ingrese el mensaje que desea transmitir!`
+    return `❎ Please enter the message you want to convey!`
 }
 
 exports.cmdNotFound = (cmd, prefix) => {
-    return `❎ Dominio *${cmd}* no registrado en *${prefix}allmenu*`
+    return `❎ Command *${cmd}* not registered in *${prefix}allmenu*`
 }
 
 exports.ownerOnly = () => {
-    return `❎ Este comando es para el dueño`
+    return `❎ This command is for the owner`
 }
 
 exports.doneOwner = () => {
-    return `✅  ️Está hecho, Propietario~`
+    return `✅  ️It's done, Owner ~`
 }
 
 exports.groupOnly = () => {
-    return `👥  ¡Este comando solo se puede usar en grupos!`
+    return `👥  This command can only be used in groups!`
 }
 
 exports.adminOnly = () => {
-    return `🙅  ¡Este comando solo puede ser utilizado por administradores de grupo!`
+    return `🙅  This command can only be used by group admins!`
 }
 
 exports.nhFalse = () => {
-    return `Kode tidak valid!`
+    return `Invalid code!`
 }
 
 exports.listBlock = (blockNumber) => {
     return `*── 「 HALL OF SHAME 」 ──*
     
-Total diblokir: *${blockNumber.length}* user\n`
+Totally blocked: *${blockNumber.length}* user\n`
 }
 
 exports.notAdmin = () => {
-    return `❎ User bukan seorang admin! ❎`
+    return `❎ User is not an admin! ❎`
 }
 
 exports.adminAlready = () => {
-    return `❎ Tidak  dapat mem-promote user yang merupakan admin!`
+    return `❎ Cannot promote a user who is an admin!`
 }
 
 exports.botNotAdmin = () => {
-    return `¡Haz que el bot sea administrador primero! 🙏`
+    return `Make bot as admin first! `
 }
 
 exports.received = (pushname) => {
     return `
-Halo ${pushname}!
-Terima kasih telah melapor, laporanmu akan kami segera terima.`
+Hello ${pushname}!
+Thank you for reporting, we will receive your report soon.`
 }
 
 exports.videoLimit = () => {
-    return `Ukuran file terlalu besar!`
+    return `File size is too big!`
 }
 
 exports.notNum = (q) => {
-    return `"${q}", bukan angka!`
+    return `"${q}", not numbers!`
 }
 exports.menunya = (salam, pushname, botname) =>{
-	return`Hola hermano ${pushname} 👋 seguro ${salam} , 
-yo ${botname}, este bot es Whatsapp Multi-Device Beta.
+	return`Hi bro ${pushname} 👋 good ${salam} , 
+i'm ${botname}, this bot is Whatsapp Multi-Device Beta.
 `
 }
 exports.listMenu = (prefix) => {
@@ -838,8 +849,8 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}sendsesi
 │○ ${prefix}listpc
 │○ ${prefix}listgc
-│○ ${prefix}broadcast
-│○ ${prefix}bc
+│○ ${prefix}broadcast 
+│○ ${prefix}bc 
 │○ ${prefix}bcgc 
 │○ ${prefix}pushkontak  
 │○ ${prefix}bcimage
@@ -869,17 +880,17 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}anticall 
 │○ ${prefix}join 
 │○ ${prefix}self
-│○ ${prefix}public
-│○ ${prefix}del
+│○ ${prefix}public [only bot]
+│○ ${prefix}del [reply pesan bot]
 │○ ${prefix}pppanjang
 │○ ${prefix}setpppanjang
-╰❒ ${prefix}setppbot
+╰❒ ${prefix}setppbot 
 
 ╭─❒ 「 Store Menu 」
 │○ ${prefix}list
-│○ ${prefix}addlist
-│○ ${prefix}dellist
-│○ ${prefix}update
+│○ ${prefix}addlist [key|respond]
+│○ ${prefix}dellist [key]
+│○ ${prefix}update [key|respond]
 │○ ${prefix}store
 │○ ${prefix}kali
 │○ ${prefix}bagi
@@ -913,17 +924,17 @@ exports.listMenu2 = (prefix) => {
 
 
 ╭─❒ 「 Database 」 
-│○ ${prefix}setcmd
-│○ ${prefix}delcmd
+│○ ${prefix}setcmd 
+│○ ${prefix}delcmd 
 │○ ${prefix}listcmd
 │○ ${prefix}absen
 │○ ${prefix}cekabsen
 │○ ${prefix}deleteabsen
 │○ ${prefix}absenstart
-│○ ${prefix}addmsg
-│○ ${prefix}getmsg
+│○ ${prefix}addmsg 
+│○ ${prefix}getmsg 
 │○ ${prefix}listmsg
-╰❒ ${prefix}delmsg
+╰❒ ${prefix}delmsg 
 
 ╭─❒ 「 Rpg Games 」
 │○ ${prefix}adventure
@@ -980,13 +991,13 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}sider
 │○ ${prefix}wm
 │○ ${prefix}infochat
-│○ ${prefix}setdesk
-│○ ${prefix}setppgrup
+│○ ${prefix}setdesk 
+│○ ${prefix}setppgrup 
 │○ ${prefix}pppanjanggc
 │○ ${prefix}setpppanjanggc
 │○ ${prefix}revoke
 │○ ${prefix}leave
-│○ ${prefix}add
+│○ ${prefix}add 
 │○ ${prefix}kick
 │○ ${prefix}leave
 │○ ${prefix}linkgc
@@ -1018,9 +1029,9 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}antibadword
 │○ ${prefix}antibadword2
 │○ ${prefix}take
-│○ ${prefix}group
-│○ ${prefix}tagall
-╰❒ ${prefix}hidetag
+│○ ${prefix}group 
+│○ ${prefix}tagall 
+╰❒ ${prefix}hidetag 
 
 ╭─❒ 「 Anime 」 
 │○ ${prefix}quotesanime
@@ -1067,15 +1078,15 @@ exports.listMenu2 = (prefix) => {
 ╭─❒ 「 Converter 」
 │○ ${prefix}emoji
 │○ ${prefix}emojimix
-│○ ${prefix}toaudio
-│○ ${prefix}tomp3
-│○ ${prefix}tovn
-│○ ${prefix}stiker
-│○ ${prefix}tourl
-│○ ${prefix}ssweb
-│○ ${prefix}togif
-│○ ${prefix}tomp4
-╰❒${prefix}toimg
+│○ ${prefix}toaudio 
+│○ ${prefix}tomp3 
+│○ ${prefix}tovn 
+│○ ${prefix}stiker 
+│○ ${prefix}tourl 
+│○ ${prefix}ssweb 
+│○ ${prefix}togif 
+│○ ${prefix}tomp4 
+╰❒ ${prefix}toimg 
 
 
 ╭─❒ 「 Image Effect 」 
@@ -1159,8 +1170,8 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}igreels 
 │○ ${prefix}igtv 
 │○ ${prefix}soundcloud 
-│○ ${prefix}gitclone
-│○ ${prefix}gitrepo
+│○ ${prefix}gitclone 
+│○ ${prefix}gitrepo 
 │○ ${prefix}mediafire 
 │○ ${prefix}nhentaipdf
 ╰❒ ${prefix}twitter
@@ -1453,10 +1464,10 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}horror2 
 │○ ${prefix}lava 
 │○ ${prefix}bagel 
-│○ ${prefix}blackpink
-│○ ${prefix}rainbow2
-│○ ${prefix}water-pipe
-│○ ${prefix}halloween
+│○ ${prefix}blackpink 
+│○ ${prefix}rainbow2 
+│○ ${prefix}water-pipe 
+│○ ${prefix}halloween 
 │○ ${prefix}sketch 
 │○ ${prefix}sircuit 
 │○ ${prefix}discovery 
@@ -1549,7 +1560,7 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}red-sparkling 
 │○ ${prefix}cyan-sparkling 
 │○ ${prefix}decorative 
-│○ ${prefix}chocolate
+│○ ${prefix}chocolate 
 │○ ${prefix}strawberry 
 │○ ${prefix}koifish 
 │○ ${prefix}bread 
@@ -1587,8 +1598,8 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}purple-jewelry 
 │○ ${prefix}orange-jewelry 
 │○ ${prefix}green-jewelry 
-│○ ${prefix}cyan-jewelry
-│○ ${prefix}blue-jewelry
+│○ ${prefix}cyan-jewelry 
+│○ ${prefix}blue-jewelry 
 │○ ${prefix}hot-metal 
 │○ ${prefix}golden 
 │○ ${prefix}blue-glitter 
@@ -1598,24 +1609,24 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}silver-glitter 
 │○ ${prefix}gold-glitter 
 │○ ${prefix}bronze-glitter 
-│○ ${prefix}eroded-metal
+│○ ${prefix}eroded-metal 
 │○ ${prefix}carbon 
 │○ ${prefix}candy 
-│○ ${prefix}blue-metal
-│○ ${prefix}blue-gem
-│○ ${prefix}3dchrome
-│○ ${prefix}black-metal
-╰❒ ${prefix}metal-gold
+│○ ${prefix}blue-metal 
+│○ ${prefix}blue-gem 
+│○ ${prefix}3dchrome 
+│○ ${prefix}black-metal 
+╰❒ ${prefix}metal-gold 
  
 
 ╭─❒ 「 Others 」
-│○ ${prefix}afk
-│○ ${prefix}translate código_idioma
-│○ ${prefix}tts código_idioma
+│○ ${prefix}afk 
+│○ ${prefix}translate code_language 
+│○ ${prefix}tts kode_bahasa 
 │○ ${prefix}kalkulator 
-│○ ${prefix}smeme
-│○ ${prefix}smeme2
-│○ ${prefix}memegen
+│○ ${prefix}smeme 
+│○ ${prefix}smeme2 
+│○ ${prefix}memegen 
 ╰❒
 
 ╭─❒ 「 Game Menu 」
@@ -1770,12 +1781,12 @@ exports.listMenu2 = (prefix) => {
 
 ╭─❒ 「 Islamic Menu 」
 │○ ${prefix}asmaulhusna
-│○ ${prefix}kisahnabi
+│○ ${prefix}kisahnabi 
 │○ ${prefix}jadwalshalat
 │○ ${prefix}randomquran
 │○ ${prefix}randomquran2
 │○ ${prefix}listsurah
-│○ ${prefix}tafsirsurah
+│○ ${prefix}tafsirsurah 
 ╰❒ ${prefix}alquranaudio 
 
 ╭─❒ 「 Sound Menu 」
@@ -1866,29 +1877,29 @@ exports.listMenu2 = (prefix) => {
 
 exports.rules = (prefix) => {
     return `
-*── 「 NORMAS AND FAQ 」 ──*
+*── 「 RULES AND FAQ 」 ──*
 
-1. No envíe spam a los bots. 🙅
-2. no llames al bot. ☎️
-3. No compares bots 👍
+1. Jangan spam bot. 🙅
+2. Jangan telepon bot. ☎️
+3. Jangan membandingkan bot 👍
 
-🗯️ Bot no o lento para responder ?
-➡️ Puede verse afectado por la red, la señal, prohibido por Whatsapp y algunas razones.
+🗯️ Bot tidak atau lambat merespon ?
+➡️ Mungkin dipengaruhi oleh jaringan, signal, banned oleh Whatsapp dan beberapa asalan.
 
-🗯️ ¿Dónde puedo obtener el script de este bot?
-➡️ Puede obtener este script en YouTube ZEEONE OFC
+🗯️ Dimana saya bisa mendapatkan Script dari bot ini ?
+➡️ Script ini bisa kalian dapatkan di YouTube ZEEONE OFC
 
-🗯️ ¿Puedo agregar al grupo?
-➡️ Para eso depende del propietario del bot.
+🗯️ Boleh saya menambah ke grup?
+➡️ Untuk itu tergantung dari owner bot sendiri
 
-🗯️ ¿Cuál es el prefix?
-➡️ Este bot usa prefix múltiple y puedes usarlo sin prefix
+🗯️ Prefixnya apa ya?
+➡️ Bot ini menggunakan multi prefix & bisa kamu gunakan tanpa prefix
 
-Si entiende las reglas, por favor escriba *${prefix}menu* ¡para comenzar!
+Jika sudah dipahami rules-nya, silakan ketik *${prefix}menu* untuk memulai!
 
-️ Todas las políticas y condiciones de los bots están sujetas a cambios en cualquier momento 
+⚠️ Segala kebijakan dan ketentuan bot dapat berubah kapan saja 
 
-Gracias! 
+Terimakasih! 
 `
 }
 exports.welcome = () =>{
@@ -1915,21 +1926,20 @@ exports.tos = (ownernomer) => {
     return `
 *-------「 DONATE 」 -------*
 
-Hola hermano ☺️ 
-Puedes ayudarme a mantener este bot actualizado mediante una donación
+Hi bro ☺️ 
+You can support me to keep this bot up to date by donating
 
-Cualquier cantidad de su donación significará mucho 👍
+Any amount of your donation will be very meaningful 👍
+Thanks!
 
-Gracias!
-
-Persona de contacto Titular:
+Contact person Owner:
 wa.me/${ownernomer}
 
     `
 }
 
 exports.info = (prefix) =>{
-	return`╭─❒ 「 Robots de información 」 
+	return`╭─❒ 「 Bot Info 」 
 │○ ${prefix}owner
 │○ ${prefix}rules
 │○ ${prefix}sc
@@ -1940,8 +1950,8 @@ exports.info = (prefix) =>{
 `}
 
 exports.ownermenu = (prefix) =>{
-return`╭─❒ 「 dueño 」 
-│○ ${prefix}setmenu 
+return`╭─❒ 「 Owner 」 
+│○ ${prefix}setmenu
 │○ ${prefix}setwm
 │○ ${prefix}sendsesi
 │○ ${prefix}listpc
@@ -1977,15 +1987,15 @@ return`╭─❒ 「 dueño 」
 │○ ${prefix}anticall 
 │○ ${prefix}join 
 │○ ${prefix}self
-│○ ${prefix}public
-│○ ${prefix}del
+│○ ${prefix}public [only bot]
+│○ ${prefix}del [reply pesan bot]
 │○ ${prefix}pppanjang
 │○ ${prefix}setpppanjang
 ╰❒ ${prefix}setppbot 
 `}
 
 exports.database = (prefix) =>{
-	return`╭─❒ 「 bases de datos 」 
+	return`╭─❒ 「 Database 」 
 │○ ${prefix}setcmd 
 │○ ${prefix}delcmd 
 │○ ${prefix}listcmd
@@ -1993,14 +2003,14 @@ exports.database = (prefix) =>{
 │○ ${prefix}cekabsen
 │○ ${prefix}deleteabsen
 │○ ${prefix}absenstart
-│○ ${prefix}addmsg 
 │○ ${prefix}getmsg 
+│○ ${prefix}addmsg 
 │○ ${prefix}listmsg
 ╰❒ ${prefix}delmsg 
 `}
 
 exports.group = (prefix) =>{
-	return`╭─❒ 「 Grupo 」 
+	return`╭─❒ 「 Group 」 
 │○ ${prefix}addsewa
 │○ ${prefix}delsewa
 │○ ${prefix}listsewa
@@ -2014,12 +2024,12 @@ exports.group = (prefix) =>{
 │○ ${prefix}wm
 │○ ${prefix}infochat
 │○ ${prefix}setdesk 
-│○ ${prefix}setppgrup
+│○ ${prefix}setppgrup 
 │○ ${prefix}pppanjanggc
 │○ ${prefix}setpppanjanggc
 │○ ${prefix}revoke
 │○ ${prefix}leave
-│○ ${prefix}add [62***]
+│○ ${prefix}add 
 │○ ${prefix}kick @tag
 │○ ${prefix}leave
 │○ ${prefix}linkgc
@@ -2051,13 +2061,13 @@ exports.group = (prefix) =>{
 │○ ${prefix}antibadword
 │○ ${prefix}antibadword2
 │○ ${prefix}take
-│○ ${prefix}group
+│○ ${prefix}group 
 │○ ${prefix}tagall 
 ╰❒ ${prefix}hidetag 
 `}
 
 exports.anime = (prefix) =>{
-	return`╭─❒ 「 animado 」 
+	return`╭─❒ 「 Anime 」 
 │○ ${prefix}quotesanime
 │○ ${prefix}anime 
 │○ ${prefix}animeinfo
@@ -2066,7 +2076,7 @@ exports.anime = (prefix) =>{
 `}
 
 exports.tag = (prefix) =>{
-	return`╭─❒ 「 etiquetas 」 
+	return`╭─❒ 「 Tag 」 
 │○ ${prefix}stickertag
 │○ ${prefix}videotag 
 │○ ${prefix}vntag 
@@ -2074,7 +2084,7 @@ exports.tag = (prefix) =>{
 `}
 
 exports.stalk = (prefix) =>{
-	return`╭─❒ 「 acecho 」 
+	return`╭─❒ 「 Stalking 」 
 │○ ${prefix}mlstalk
 │○ ${prefix}ffstalk
 │○ ${prefix}igstalk 
@@ -2083,7 +2093,7 @@ exports.stalk = (prefix) =>{
 `}
 
 exports.search = (prefix) =>{
-	return`╭─❒ 「 Buscar 」 
+	return`╭─❒ 「 Search 」 
 │○ ${prefix}ytsearch 
 │○ ${prefix}openai 
 │○ ${prefix}openaiimg 
@@ -2105,22 +2115,22 @@ exports.search = (prefix) =>{
 `}
 
 exports.converter = (prefix) =>{
-	return`╭─❒ 「 Convertidores 」 
+	return`╭─❒ 「 Converter 」 
 │○ ${prefix}emoji
 │○ ${prefix}emojimix
-│○ ${prefix}toaudio
-│○ ${prefix}tomp3
-│○ ${prefix}tovn
+│○ ${prefix}toaudio 
+│○ ${prefix}tomp3 
+│○ ${prefix}tovn 
 │○ ${prefix}stiker
-│○ ${prefix}tourl
-│○ ${prefix}ssweb
+│○ ${prefix}tourl 
+│○ ${prefix}ssweb 
 │○ ${prefix}togif 
 │○ ${prefix}tomp4 
 ╰❒${prefix}toimg 
 `}
 
 exports.effect = (prefix) =>{
-	return`╭─❒ 「 Efectos de imagen 」 
+	return`╭─❒ 「 Image Effect 」 
 │○ ${prefix}wanted 
 │○ ${prefix}utatoo 
 │○ ${prefix}unsharpen 
@@ -2159,7 +2169,7 @@ exports.effect = (prefix) =>{
 
 //
 exports.effect2 = (prefix) =>{
-	return`╭─❒ 「 Efectos de pegatinas 」 
+	return`╭─❒ 「 Sticker Effect 」 
 │○ ${prefix}jail 
 │○ ${prefix}red 
 │○ ${prefix}gay 
@@ -2183,7 +2193,7 @@ exports.effect2 = (prefix) =>{
 }
 
 exports.download = (prefix) =>{
-return`╭─❒ 「 Descargas 」 
+return`╭─❒ 「 Download 」 
 │○ ${prefix}tiktok 
 │○ ${prefix}tiktoknowm 
 │○ ${prefix}tiktokwm 
@@ -2205,16 +2215,16 @@ return`╭─❒ 「 Descargas 」
 │○ ${prefix}igreels 
 │○ ${prefix}igtv 
 │○ ${prefix}soundcloud 
-│○ ${prefix}gitclone
+│○ ${prefix}gitclone 
 │○ ${prefix}gitrepo 
 │○ ${prefix}mediafire 
 │○ ${prefix}nhentaipdf
-╰❒ ${prefix}twitter 
+╰❒ ${prefix}twitter link
 `
 }
 
 exports.ranime = (prefix) =>{
-	return`╭─❒ 「 Animé aleatorio 」
+	return`╭─❒ 「 Random Anime 」
 │○ ${prefix}loli
 │○ ${prefix}neko
 │○ ${prefix}waifu
@@ -2326,7 +2336,7 @@ exports.nsfw = (prefix) =>{
 }
 
 exports.textpro = (prefix) =>{
-	return`╭─❒ 「 Menú Textpro 」
+	return`╭─❒ 「 Textpro Menu 」
 │○ ${prefix}halloween2 
 │○ ${prefix}horror 
 │○ ${prefix}game8bit 
@@ -2512,7 +2522,7 @@ exports.textpro = (prefix) =>{
 
 
 exports.other = (prefix) =>{
-return`╭─❒ 「 Otros 」
+return`╭─❒ 「 Others 」
 │○ ${prefix}ttp 
 │○ ${prefix}attp 
 │○ ${prefix}afk
@@ -2525,7 +2535,7 @@ return`╭─❒ 「 Otros 」
 `
 }
 exports.game = (prefix) =>{
-return`╭─❒ 「 Menú Juegos 」
+return`╭─❒ 「 Game Menu 」
 │○ ${prefix}tembak
 │○ ${prefix}tolak
 │○ ${prefix}terima
@@ -2548,7 +2558,7 @@ return`╭─❒ 「 Menú Juegos 」
 `
 }
 exports.asupan = (prefix) =>{
-return`╭─❒ 「 Ingesta de Menú 」
+return`╭─❒ 「 Asupan Menu 」
 │○ ${prefix}chika
 │○ ${prefix}delvira
 │○ ${prefix}ayu
@@ -2574,7 +2584,7 @@ return`╭─❒ 「 Ingesta de Menú 」
 `
 }
 exports.cecan = (prefix) =>{
-return`╭─❒ 「 Chica al azar 」
+return`╭─❒ 「 Random Cewe 」
 │○ ${prefix}china 
 │○ ${prefix}indonesia 
 │○ ${prefix}malaysia 
@@ -2590,7 +2600,7 @@ return`╭─❒ 「 Chica al azar 」
 }
 
 exports.tqto = () =>{
-	return`╭─❒ 「 Gracias 」 
+	return`╭─❒ 「 TqTo 」 
 │○ My God
 │○ My Parents
 │○ Fatih A.
@@ -2605,8 +2615,8 @@ exports.tqto = () =>{
 }
 
 exports.primbonmenu = (prefix) =>{
-	return`╭─❒ 「 Horóscopo 」
-│○ ${prefix}nomorhoki 887435047326
+	return`╭─❒ 「 Primbon 」
+│○ ${prefix}nomorhoki
 │○ ${prefix}artimimpi 
 │○ ${prefix}artinama 
 │○ ${prefix}ramaljodoh
@@ -2640,7 +2650,7 @@ exports.primbonmenu = (prefix) =>{
 }
 
 exports.stcmenu = (prefix) =>{
-	return`╭─❒ 「 Pegatinas de telegramas 」
+	return`╭─❒ 「 Telegram Sticker 」
 │○ ${prefix}awoawo
 │○ ${prefix}benedict
 │○ ${prefix}chat
@@ -2665,7 +2675,7 @@ exports.stcmenu = (prefix) =>{
 `}
 
 exports.ephotomenu = (prefix) =>{
-	return`╭─❒ 「 Efoto360 menús 」
+	return`╭─❒ 「 Ephoto360 Menu 」
 │○ ${prefix}youtubegold 
 │○ ${prefix}youtubesilver 
 │○ ${prefix}facebookgold 
@@ -2674,7 +2684,7 @@ exports.ephotomenu = (prefix) =>{
 │○ ${prefix}instagramsilver 
 │○ ${prefix}twittergold 
 │○ ${prefix}twittersilver 
-│○ ${prefix}retrotext 
+│○ ${prefix}retro 
 │○ ${prefix}halloweenbats 
 │○ ${prefix}halloween 
 │○ ${prefix}cardhalloween 
@@ -2704,7 +2714,7 @@ exports.ephotomenu = (prefix) =>{
 │○ ${prefix}moderngoldsilver 
 │○ ${prefix}moderngold2 
 │○ ${prefix}moderngold3 
-│○ ${prefix}fabrictext 
+│○ ${prefix}fabric 
 │○ ${prefix}masteryavatar 
 │○ ${prefix}messagecoffee 
 │○ ${prefix}announofwin 
@@ -2755,89 +2765,89 @@ exports.ephotomenu = (prefix) =>{
 }
 
 exports.logomenu = (prefix) =>{
-	return`╭─❒ 「 logotipos de menú 」
-│○ ${prefix}anonymous2
-│○ ${prefix}astronotspace
-│○ ${prefix}avatar3q360
-│○ ${prefix}avatarff
-│○ ${prefix}avatarleagueofking
-│○ ${prefix}avatarlolbyname
-│○ ${prefix}avataroverwatch
-│○ ${prefix}bannerofaov
-│○ ${prefix}bannerofaov2
-│○ ${prefix}bannerofapex
-│○ ${prefix}banneroffreefire
-│○ ${prefix}banneroflol
-│○ ${prefix}bannerofoverwatch
-│○ ${prefix}bannerofpubg
-│○ ${prefix}bannerytcsgo
-│○ ${prefix}beautifulgalaxylol
-│○ ${prefix}beautifulshimmering
-│○ ${prefix}blueneon
-│○ ${prefix}circlemarcotteam
-│○ ${prefix}colorfulpubg
-│○ ${prefix}companylogo
-│○ ${prefix}companylogo2
+	return`╭─❒ 「 Logo Menu 」
 │○ ${prefix}coverbannerlol
-│○ ${prefix}coverdota2
-│○ ${prefix}coverfblol
-│○ ${prefix}coverfreefirefb
-│○ ${prefix}coverleagueofking
-│○ ${prefix}coverloknew
-│○ ${prefix}coverofwarface
-│○ ${prefix}coveronepiecefb
-│○ ${prefix}crossfirecover
-│○ ${prefix}crossfirestyle
-│○ ${prefix}csgocover
-│○ ${prefix}cutegirlgamer
-│○ ${prefix}cyberhunterfb
+│○ ${prefix}pubglogomaker
+│○ ${prefix}colorfulpubg 
+│○ ${prefix}astronotspace
+│○ ${prefix}wallpaperaov
+│○ ${prefix}maketeamlogo
+│○ ${prefix}circlemarcotteam
+│○ ${prefix}wallpaperml
 │○ ${prefix}dragonballfb
+│○ ${prefix}bannerofaov 
 │○ ${prefix}effect3donbeach
-│○ ${prefix}elegantrotation
-│○ ${prefix}fbgamepubgcover
+│○ ${prefix}cutegirlgamer
 │○ ${prefix}footballteam
-│○ ${prefix}gaminglogo4fvs
-│○ ${prefix}gamingmascot
-│○ ${prefix}gradientlogo
-│○ ${prefix}gunlogogaming
+│○ ${prefix}beautifulshimmering
+│○ ${prefix}pubgcutelogo
+│○ ${prefix}elegantrotation
+│○ ${prefix}logogamingassasin
 │○ ${prefix}introvideomaker
-│○ ${prefix}letterlogos 
-│○ ${prefix}logoaccording 
-│○ ${prefix}logogamingassasin 
-│○ ${prefix}lolcoverbyname 
-│○ ${prefix}lolpentakill 
-│○ ${prefix}lolwallpaper 
-│○ ${prefix}maketeamlogo 
-│○ ${prefix}mascotstyle 
-│○ ${prefix}metalmascot 
+│○ ${prefix}gaminglogo4fvs
+│○ ${prefix}blueneon
+│○ ${prefix}metalmascot
+│○ ${prefix}anonymous2
+│○ ${prefix}lolpentakill
+│○ ${prefix}avatarleagueofking
+│○ ${prefix}avatarff
+│○ ${prefix}overwatchwallpaper
+│○ ${prefix}rovwallpaperhd
+│○ ${prefix}rovwallpaper
+│○ ${prefix}beautifulgalaxylol
+│○ ${prefix}crossfirecover 
+│○ ${prefix}lolwallpaper
+│○ ${prefix}coverdota2
+│○ ${prefix}coverleagueofking
+│○ ${prefix}avatar3q360
+│○ ${prefix}coverofwarface
 │○ ${prefix}newlolavatar 
+│○ ${prefix}csgocover
+│○ ${prefix}coverloknew
+│○ ${prefix}coverfblol 
 │○ ${prefix}overwatchcover 
-│○ ${prefix}overwatchwallpaper 
-│○ ${prefix}pencilsketch 
-│○ ${prefix}pubgcutelogo 
-│○ ${prefix}pubglogomaker 
-│○ ${prefix}rovwallpaper 
-│○ ${prefix}rovwallpaperhd 
+│○ ${prefix}crossfirestyle 
+│○ ${prefix}avatarlolbyname 
+│○ ${prefix}lolcoverbyname 
+│○ ${prefix}cyberhunterfb 
+│○ ${prefix}coverfreefirefb 
+│○ ${prefix}gamingmascot 
+│○ ${prefix}coveronepiecefb 
+│○ ${prefix}bannerytcsgo 
+│○ ${prefix}fbgamepubgcover 
+│○ ${prefix}banneroflol 
+│○ ${prefix}bannerofaov2 
 │○ ${prefix}teamlogo 
-│○ ${prefix}wallpaperaov 
-╰❒ ${prefix}wallpaperml 
+│○ ${prefix}companylogo2 
+│○ ${prefix}companylogo 
+│○ ${prefix}gradientlogo 
+│○ ${prefix}pencilsketch 
+│○ ${prefix}gunlogogaming 
+│○ ${prefix}banneroffreefire 
+│○ ${prefix}letterlogos 
+│○ ${prefix}bannerofoverwatch 
+│○ ${prefix}bannerofapex 
+│○ ${prefix}bannerofpubg 
+│○ ${prefix}mascotstyle 
+│○ ${prefix}logoaccording 
+╰❒ ${prefix}avataroverwatch 
 `
 }
 
 exports.islammenu = (prefix) =>{
-	return`╭─❒ 「 Menú islámico 」
+	return`╭─❒ 「 Islamic Menu 」
 │○ ${prefix}asmaulhusna
-│○ ${prefix}kisahnabi
+│○ ${prefix}kisahnabi 
 │○ ${prefix}jadwalshalat
 │○ ${prefix}randomquran
 │○ ${prefix}randomquran2
 │○ ${prefix}listsurah
-│○ ${prefix}tafsirsurah
-╰❒ ${prefix}alquranaudio
+│○ ${prefix}tafsirsurah 
+╰❒ ${prefix}alquranaudio 
 `
 }
 exports.anonchat = (prefix) =>{
-	return`╭─❒ 「 Anónimo 」
+	return`╭─❒ 「 Anonymous 」
 │○ ${prefix}menfess
 │○ ${prefix}confess
 │○ ${prefix}balasmenfess
@@ -2851,11 +2861,11 @@ exports.anonchat = (prefix) =>{
 }
 
 exports.storemenu = (prefix) =>{
-	return`╭─❒ 「 Menú Tienda 」
+	return`╭─❒ 「 Store Menu 」
 │○ ${prefix}list
-│○ ${prefix}addlist
+│○ ${prefix}addlist 
 │○ ${prefix}dellist
-│○ ${prefix}update
+│○ ${prefix}update 
 │○ ${prefix}store
 │○ ${prefix}kali
 │○ ${prefix}bagi
@@ -2879,7 +2889,7 @@ exports.storemenu = (prefix) =>{
 }
 
 exports.voiceChange = (prefix) =>{
-	return`╭─❒ 「 Menú de cambio de voz 」
+	return`╭─❒ 「 Voice Change Menu 」
 │○ ${prefix}bass
 │○ ${prefix}blown
 │○ ${prefix}deep
@@ -2894,8 +2904,9 @@ exports.voiceChange = (prefix) =>{
 ╰❒ ${prefix}tupai
 `
 }
+
 exports.storagemenu = (prefix) =>{
-	return`╭─❒ 「 Menú de almacenamiento 」
+	return`╭─❒ 「 Storage Menu 」
 │○ ${prefix}addvn
 │○ ${prefix}listvn
 │○ ${prefix}delvn
@@ -2924,7 +2935,7 @@ exports.storagemenu = (prefix) =>{
 }
 
 exports.rpgmenu = (prefix) =>{
-	return`╭─❒ 「 Juegos de rol 」
+	return`╭─❒ 「 Rpg Games 」
 │○ ${prefix}adventure
 │○ ${prefix}weekly
 │○ ${prefix}use
@@ -2970,7 +2981,7 @@ exports.rpgmenu = (prefix) =>{
 }
 
 exports.photooxy = (prefix)=>{
-	return`╭─❒ 「 Menú Fotooxi 」
+	return`╭─❒ 「 Photooxy Menu 」
 │○ ${prefix}battlegrounds-logo
 │○ ${prefix}battlefield4
 │○ ${prefix}text-8bit
@@ -2987,7 +2998,7 @@ exports.photooxy = (prefix)=>{
 │○ ${prefix}illuminated 
 │○ ${prefix}harry-potter2
 │○ ${prefix}birthday-cake 
-│○ ${prefix}embroidery
+│○ ${prefix}embroidery 
 │○ ${prefix}flaming 
 │○ ${prefix}furtext 
 │○ ${prefix}nightsky 
@@ -3022,7 +3033,7 @@ exports.photooxy = (prefix)=>{
 }
 
 exports.soundmenu = (prefix) =>{
-return`╭─❒ 「 Menú de sonido 」
+return`╭─❒ 「 Sound Menu 」
 │○ ${prefix}sound1
 │○ ${prefix}sound2
 │○ ${prefix}sound3

@@ -1,22 +1,23 @@
-exports.onlyPrem = `Fitur khusus member premium`
-exports.aikey = `apikey open ai salah, silahkan ganti di settins.js`
-exports.DelSetWel = `Sukses delete set welcome di grup ini`
-exports.NoSetWel = `Belum ada set welcome di grup ini`
-exports.DelSetLeft = `Sukses delete set goodbye di grup ini`
-exports.NoSetLeft = `Belum ada set goodbye di grup ini`
-exports.doneSet = `Sudah di ubah sebelumnya`
-exports.serverErr = `Server sedang eror`
-exports.kodeErr = `Kode bahasa salah, silahkan cek menggunakan perintah .kodebahasa`
+//I only use google translate, so if there is an error please correct it 
+exports.onlyPrem = `Special features for premium users`
+exports.aikey = `openai api key is wrong, please change it in settings.js`
+exports.DelSetWel = `Success delete set welcome in this group`
+exports.NoSetWel = `There is no welcome set in this group yet`
+exports.DelSetLeft = `Success delete set goodbye in this group`
+exports.NoSetLeft = `There is no set goodbye yet in this group`
+exports.doneSet = `It's been changed before`
+exports.serverErr = `Server is down!`
+exports.kodeErr = `Incorrect language code, please check using the .codelanguage command`
 exports.Tts = (prefix, command) => {
-    return `Contoh :
+    return `Example :
 
-1. Kirim perintah ${prefix + command} *kode bahasa* *teks*
-	• Contoh : ${prefix + command} id halo
-2. Reply chat dengan caption ${prefix + command} *kode bahasa*
-	• Contoh : ${prefix + command} id
-Daftar bahasa yang di dukung ${prefix}kodebahasa`
+1. Send command ${prefix + command} *language code* *text*
+	• Example : ${prefix + command} id Hello
+2. Reply chat with caption ${prefix + command} *language code*
+	• Example : ${prefix + command} id
+List of language​supported ${prefix}languagecode`
 }
-exports.langkode = `*「 KODE BAHASA 」*
+exports.langkode = `*「 LANGUAGE CODE 」*
 af : Afrikaans
 sq : Albanian
 ar : Arab
@@ -69,719 +70,730 @@ tr : Turkish
 vi : Vietnamese
 cy : Welsh`
 exports.limitLu = (m) =>{
-	return`Sisa limit kamu : ${m} `
+	return`Your remaining limit : ${m} `
 	}
 	
 exports.addstik = (a, b) =>{
-	return`List ${a} dengan key ${b} sudah ada di database`
+	return`List ${a} with key ${b} already in the database`
 	}
 exports.delstik = (a, b) =>{
-	return`List ${a} dengan key ${b} tidak ada di database`
+	return`List ${a} with key ${b} not in database`
 	}
-exports.profile = (username, m, about, pasangan, PhoneNumber, exp, min, xp, math, prefix, level, role, limit, registered, tanggal, regTime,premium, msToDate , premiumDate, now, lastclaim) =>{
-	return`📛 Nama: ${username} (@${m.sender.split`@`[0]})${about ? '\n💌 Bio: ' + about : ''}
+exports.profile = (username, m, about, pasangan, PhoneNumber, exp, min, xp, math, prefix, level, role, limit, registered, tanggal_, regTime,premium, msToDate , premiumDate, now, lastclaim) =>{
+	return`📛 Name: ${username} (@${m.sender.split`@`[0]})${about ? '\n💌 Bio: ' + about : ''}
 👨‍❤️‍👨 Status: ${pasangan ? `Berpacaran @${pasangan.split`@`[0]}` : '-' }
-#️⃣ Nomor: ${PhoneNumber('+' + m.sender.replace('@s.whatsapp.net', '')).getNumber('international')}
+#️⃣ Number: ${PhoneNumber('+' + m.sender.replace('@s.whatsapp.net', '')).getNumber('international')}
 🔗 Link: https://wa.me/${m.sender.split`@`[0]}
 🤷‍♂️ XP: Total ${exp} (${exp - min} / ${xp}) [ ${math <= 0 ? `Ready to *${prefix}levelup*` : `${math} XP left to levelup`} ]
 🎚️ Level: ${level}
 🎢 Role: ${role}
 📊 Limit: ${limit}
-®️ Registered: ${registered ? '✅ (' + tanggal(regTime) + ')' : '❌'}
+®️ Registered: ${registered ? '✅ (' + tanggal_(regTime) + ')': '❌'}
 ⛽ Premium: ${premium ? `✅\n⏰ Expired Premium : msToDate(premiumDate - now)` : '❌'}
-🛄 Last claim: ${lastclaim > 0 ? tanggal(lastclaim) : '-'}`
+🛄 Last claim: ${lastclaim > 0 ? tanggal_(lastclaim) : ''}`
 	}
 
-//
 exports.needReg = (a, b, c) =>{
 	return`🇲🇨 Daftar dulu bang
 
 Gini : #daftar nama|umur|gender|hobi
+
 Contoh : #daftar ${a}|18|cowo|Game
+
+
 
 🇺🇲 Please register first
 
+
+
 Like this : #register name|age|gender|hobby
+
 Example : #register ${a}|18|male|Games`
 }
 exports.Nolimit = (prefix) =>{
-	return`Limit kamu hari ini telah habis ⚠️\n\nSilahkan beli limit dengan cara ketik ${prefix}buy atau ${prefix}buyall`
+	return`Your limit today has run out ⚠️\n\nPlease buy a limit by typing ${prefix}buy or ${prefix}buyall`
 	}
-exports.Noseri = () =>{
-	return`Nomor seri (sn) nya salah\n.ceksn -- _cek serial number_`
+exports.i = () =>{
+	return`The serial number (sn) is wrong\n.ceksn -- _check serial number_`
 	}
 exports.NoseriOk = () =>{
-	return`Berhasil membatalkan pendaftaran!`
+	return`Successfully cancel registration!`
 	}
 exports.ExReg = (c) =>{
 	return`🇲🇨 Gunakan tanda "|" sebagai pembatas
 
 Gini : #daftar nama|umur|gender|hobi
+
 Contoh : #daftar ${a}|18|cowo|Game
+
 
 
 🇺🇲 Use the "|" sign as a barrier
 
+
 Like this : #register name|age|gender|hobby
+
 Example : #register ${a}|18|male|Games`
 	}
 exports.DoneReg = () =>{
-	return`Kamu sudah terdaftar di database`
+	return`You are already registered in the database`
 	}
 exports.UmurReg = () =>{
-	return`Umur harus berupa angka`
+	return`Age must be a number`
 	}
 exports.NamaReg = () =>{
-	return`Nama kamu panjang banget, gunakan nama awal saja`
+	return`Your name is really long, just use your first name`
 	}
 exports.HobiReg = () =>{
-	return`Hobi kamu banyak banget, cukup 1 atau 2 hobi saja`
+	return`You have a lot of hobbies, just 1 or 2 hobbies`
 	}
 exports.RegReg = (a,b,c,d,e,f,g,h,i) =>{
-	return`╭─「 *VERIFIKASI BERHASIL* 」
-│\`\`\`Verifikasi Sukses Dengan\`\`\` 
+	return`╭─「 *SUCCESSFUL VERIFICATION* 」
+│\`\`\`Verification Success With\`\`\` 
 │
 │\`\`\`SN: ${a}\`\`\`
-│\`\`\`Pada : ${b}\`\`\`
-│\`\`\`Nama : ${c}\`\`\`
-│\`\`\`Umur : ${d}\`\`\`
+│\`\`\`On : ${b}\`\`\`
+│\`\`\`Name : ${c}\`\`\`
+│\`\`\`Age : ${d}\`\`\`
 │\`\`\`Gender : ${e}\`\`\`
-│\`\`\`Nomor : @${f}\`\`\`
-│\`\`\`Untuk menggunakan bot silahkan \`\`\`
-│\`\`\`Kirim perintah ${g}menu\`\`\`
-│\`\`\`atau ${h}allmenu\`\`\`
+│\`\`\`Number : @${f}\`\`\`
+│\`\`\`To use bot Please \`\`\`
+│\`\`\`Send command ${g}menu\`\`\`
+│\`\`\`or ${h}allmenu\`\`\`
 │
 │\`\`\`\Total : ${i} Users\`\`\`
 ╰─────────────────────`
 	}
 exports.genderReg = (a) =>{
-	return`Pilih salah satu ( cewe / cowo)\n\n${a}`
+	return`Select one ( male / female)\n\n${a}`
 	}
 exports.UmurXReg = () =>{
-	return`Umur kamu terlalu tua, bukannya mati ehh malah main bot`
+	return`You are too old`
 	}
 exports.firstChat = (a, b, c) =>{
-	return`Selamat ${a} ${b} 🤗, saya adalah ${c} yaitu bot whatsapp. Ada yang bisa ${c} bantu?`
+	return`Hi ${a} ${b} 🤗, I am ${c} whatsapp bots. Can i help u?`
 	}
-exports.StartAbsen = () =>{
-	return`Mulai Absen`
-	}
+
 exports.AddstikOk = (q, a, b, prefix, command) =>{
-	return`Sukses Menambahkan ${q} Ke Dalam Database ${a}\n\nCek dengan cara ${prefix}${b}`
+	return`Success Add ${q} Into Database ${a}\n\nCheck with command ${prefix}${b}`
 	}
-	
-exports.AddstikOk_ = (a,b) =>{
-	return`Durasi ${a} detik, yaitu durasi maksimal ${b} yang bisa bot simpan ke dalam database`
-	}
+
 exports.Addvn = () =>{
-	return`Tunggu sebentar, saya akan mencoba untuk mengupload media ini ke database`
+	return`Wait a minute, I will try to upload this media to the database`
 	}
-	
+
+exports.AddstikOk_ = (a, b) =>{
+	return`The duration is ${a} seconds, which is the maximum ${b} duration that bots can save into the database`
+	}
+
 exports.ListStik = (a) =>{
-	return`_Untuk mengambil ${a} silahkan kirim pesan sesuai dengan list ${a} yang ada di atas_`
+	return`_To take ${a} please send a message according to the list of ${a} the one above_`
 	}
+
+
 exports.noAbsen = () =>{
-return `❌ Tidak ada absen berlangsung di group ini! \n.absenstart -- mulai absen`
+return `❌ No absences take place in this group!\n.absen -- start absen`
 }
 exports.StartAbsen = () =>{
-	return`Mulai Absen`
+	return`Start Absence`
 	}
 exports.DahAbsen = () =>{
-	return`Kamu sudah absen`
+	return`You're absent`
 	}
 exports.DelAbsen = () =>{
-	return`✅ Berhasil menghapus absen di group ini`
+	return`✅ Successfully deleted absences in this group`
 	}
 exports.adaAbsen = () =>{
-	return`Masih ada sesi absen di group ini !`
+	return`There are still absent sessions in this group!`
 	}
 exports.SAbsen = () =>{
-	return`Absen dimulai\n.absen -- mulai absen`
+	return`Absence begins`
 	}
 //
 exports.SetCmd = (prefix, command) =>{
-	return`Reply stiker!!\nExample : ${prefix + command} .menu\n\n\n*Note : Harus disertai Prefix!!*`
+	return`Reply stiker!!\nExample : ${prefix + command} .menu\n\n\n*Note : Must be accompanied by a Prefix!!*`
 	}
 exports.CmdApa = () =>{
-	return`Untuk Command Apa?`
+	return`For What Command?`
 	}
 exports.UCmd = () =>{
-	return`Anda tidak memiliki izin untuk mengubah perintah stiker ini`
+	return`You don't have permission to modify this sticker order`
 	}
 exports.HashCmd = () =>{
-	return`Tidak ada hash`
+	return`No hashes`
 	}
 exports.DelCmd = () =>{
-	return`✅ Sticker cmd telah di hapus`
+	return`✅ The cmd sticker has been removed`
 	}
 exports.LockCmd = () =>{
-	return`Reply pesan`
+	return`Reply message`
 	}
 exports.NoCmd = () =>{
-	return`Hash tidak ditemukan di database`
+	return`Hash not found in database`
 	}
 exports.ReplyMsg = () =>{
-	return`Reply Message Yang Ingin Disave Di Database`
+	return`Reply Message You Want To Save In Database`
 	}
 exports.NoMsg = (prefix, command) =>{
-	return`Contoh : ${prefix + command} nama file`
+	return`Example : ${prefix + command} filename`
 	}
 exports.AdMsg = (text) => {
-    return `'${text}' telah terdaftar di list pesan`
+    return `'${text}' has been registered in the message list`
 }
 exports.DoneMsg = (prefix, text) => {
-    return `Berhasil menambahkan pesan di list pesan sebagai '${text}'
+    return `Successfully added message in message list as '${text}'
     
-Akses dengan ${prefix}getmsg ${text}
-Lihat list Pesan Dengan ${prefix}listmsg`
+Access with ${prefix}getmsg ${text}
+View list of Messages With ${prefix}listmsg`
 }
 exports.GetMsg = (prefix, command) => {
-    return `Example : ${prefix + command} file name\n\nLihat list pesan dengan ${prefix}listmsg`
+    return `Example : ${prefix + command} file name\n\nView message list with ${prefix}listmsg`
 }
 exports.NoInMsg = (text) => {
-    return `'${text}' tidak terdaftar di list pesan`
+    return `'${text}' not listed in the message list`
 }
 exports.DelMsg = (text) => {
-    return `Berhasil menghapus '${text}' dari list pesan`
+    return `Delete successfully '${text}' from the message list`
 }
 
 exports.OnBef = () => {
-    return `Sudah di aktifkan sebelumnya`
+    return `It's been activated before`
 }
 exports.OffYaBef = () => {
-    return `Sudah di nonaktifkan sebelumnya`
+    return `It's been deactivated before`
 }
 exports.OkOn = (command) => {
-    return `${command} Berhasil Di Aktifkan !`
+    return `${command} Successfully Activated !`
 }
 exports.OffBef = (command) => {
-    return `${command} Berhasil Di Nonaktifkan !`
+    return `${command} Successfully Deactivated !`
 }
 exports.OkMute = () => {
-    return `Bot Telah Di Mute Di Group Ini`
+    return `Bot has been muted in this group`
 }
 exports.OkUnMute = () => {
-    return `Bot Berhasil Di UnMute`
+    return `Bot Succeeded In UnMute`
 }
 exports.OkUnBanC = () => {
-    return `Bot Berhasil Di unban chat`
+    return `Bot Successfully Unban chat`
 }
 exports.NoMute = () => {
-    return `Bot belum di ban dalam group ini`
+    return `Bot has not been banned in this group`
 }
 
 exports.NoMsgBot = () => {
-    return `Pesan tersebut bukan dikirim oleh bot!`
+    return `The message was not sent by a bot!`
 }
 exports.ToimgErr = () => {
-    return `Maaf Saat Ini Belum Support Sticker Gif`
+    return `Sorry Currently Not Support Gif Sticker`
 }
 exports.NoToImg = (prefix, command) => {
-    return `Reply Sticker Dengan Caption *${prefix + command}*`
+    return `Reply Sticker With Caption *${prefix + command}*`
 }
 exports.BotPublic = () => {
-    return `Sukses Ganti Ke Mode Public`
+    return `Success Change To Public Mode`
 }
 exports.BotSelf = () => {
-    return `Sukses Ganti Ke Mode Self\n\nUntuk mengubah ke mode public silahkan gunakan nomor bot`
+    return `Successfully Change To Self Mode\n\nTo change to public mode, please use the bot number`
 }
 exports.NoToStik = (prefix, command) => {
-    return `Kirim/Reply Gambar/Video Dengan Caption ${prefix + command}\n\nDurasi Sticker Video 1-9 Detik`
+    return `Send/Reply Image/Video With Caption ${prefix + command}\n\nVideo Sticker Duration 1-9 Seconds`
 }
 exports.NoPpBot = (prefix, command) => {
-    return `Kirim/Reply Image Dengan Caption ${prefix + command}`
+    return `Send/Reply Image With Caption ${prefix + command}`
 }
 exports.ToAud = (prefix, command) => {
-    return `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`
+    return `Send/Reply the Video/Audio You Want to Use as Audio With Caption ${prefix + command}`
 }
 exports.ToMp3 = (prefix, command) => {
-    return `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
+    return `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
 }
 exports.ToVn= (prefix, command) => {
-    return `Reply Video/Audio Yang Ingin Dijadikan VN Dengan Caption ${prefix + command}`
+    return `Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`
 }
 exports.NoQouted = () => {
-    return `Pesan Yang anda reply tidak mengandung reply`
+    return `The message you replied to does not contain a reply`
 }
 exports.SetGcName = (prefix, command) => {
-    return `Kirim perintah ${prefix + command} *teks*`
+    return `Send command ${prefix + command} *text*`
 }
 exports.SetPpGc = (prefix, command) => {
-    return `Kirim/Reply Image Dengan Caption ${prefix + command}`
+    return `Send/Reply Image With Caption ${prefix + command}`
 }
 exports.JoinGc = () => {
-    return `Masukkan Link Group!`
+    return `Enter the group link!`
 }
 exports.MauKick = () => {
-    return `Kirim nomer/tag/reply target yang ingin di kick !`
+    return `Send the target number/tag/reply you want to kick!`
 }
 exports.MauAdd = () => {
-    return `Kirim nomer/tag/reply target yang ingin di add !`
+    return `Send the target number/tag/reply you want to add!`
 }
 exports.NakPm= () => {
-    return `Kirim nomer/tag/reply target yang ingin di promote !`
+    return `Send the target number/tag/reply you want to promote!`
 }
 exports.NakDm = () => {
-    return `Kirim nomer/tag/reply target yang ingin di demote !`
+    return `Send the target number/tag/reply you want to demote!`
 }
 exports.Family = () => {
-    return `Soal ini belum selesai!`
+    return `This question is not finished!`
 }
 exports.NoWm = (prefix, command) => {
-    return `Kirim perintah ${prefix + command} packname|author`
+    return `Send command ${prefix + command} packname|author`
 }
 exports.DoneExif = (packname, author) => {
-    return `Exif Berhasil Diubah Menjadi\n\nPackname : ${packname}\nAuthor : ${author}`
+    return `Exif Successfully Converted To\n\nPackname : ${packname}\nAuthor : ${author}`
 }
 exports.NoTeksOne = (prefix, command) => {
-    return `Kirim perintah ${prefix + command} *teks*\n\nContoh : ${prefix + command} WhatsApp Bot`
+    return `Send command ${prefix + command} *teks*\n\nExample : ${prefix + command} WhatsApp Bot`
 }
 exports.NoTeksTwo = (prefix, command) => {
-    return `Kirim perintah ${prefix + command} *teks 1|teks 2*\n\nContoh : ${prefix + command} WhatsApp|Bot`
+    return `Send command ${prefix + command} *teks 1|teks 2*\n\nExample : ${prefix + command} WhatsApp|Bot`
 }
 exports.OffNsfw = () => {
-    return `Fitur nsfw belum di aktifkan`
+    return `The nsfw feature has not been activated`
 }
 exports.CoverBanLol = (prefix, command) => {
-    return `Contoh: ${prefix + command} nama|heroes\nUsage: ${prefix + command} zeeone|jinx7`
+    return `Example : ${prefix + command} nama|heroes\nUsage: ${prefix + command} zeeone|jinx7`
 }
 exports.coverbannerlol = (style) => {
-    return `*Heroes Yg Kamu Masukkan Salah*\n\n_Berikut list heroes yg benar, Total_ *${style}* _heroes_\n\n`
+    return `*The Heroes You Entered are Wrong*\n\n_Here's the list of true heroes, Total_ *${style}* _heroes_\n\n`
 }
 exports.pubglogomaker = (prefix, command) => {
-    return `Contoh: ${prefix + command} nama|style\nUsage: ${prefix + command} zeeone|women`
+    return `Example : ${prefix + command} nama|style\nUsage: ${prefix + command} zeeone|women`
 }
 exports.pubglogomaker_ = (style) => {
-    return `*Style Yg Kamu Masukkan Salah*\n\n_Berikut list style yg benar, Total_ *${style}* _style_\n\n`
+    return `*The style you entered is wrong*\n\n_Here's a list of the correct styles, Total_ *${style}* _style_\n\n`
 }
 exports.colorfulpubg = (prefix, command) => {
-    return `Contoh: ${prefix + command} nama|color\nUsage: ${prefix + command} zeeone|gold`
+    return `Example : ${prefix + command} nama|color\nUsage: ${prefix + command} zeeone|gold`
 }
 exports.colorfulpubg_ = (style) => {
-    return `*Color Yg Kamu Masukkan Salah*\n\n_Berikut list color yg benar, Total_ *${style}* _color_\n\n`
+    return `*The color you entered is wrong*\n\n_Here's a list of the correct colors, Total_ *${style}* _color_\n\n`
 }
 exports.astronotspace = (prefix, command) => {
-    return `Contoh: ${prefix + command} nama|style\nUsage: ${prefix + command} zeeone|anubis`
+    return `Example: ${prefix + command} nama|style\nUsage: ${prefix + command} zeeone|anubis`
 }
 exports.wallpaperaov = (prefix, command) => {
-    return `Contoh: ${prefix + command} nama|heroes\nUsage: ${prefix + command} zeeone|allain`
+    return `Example: ${prefix + command} nama|heroes\nUsage: ${prefix + command} zeeone|allain`
 }
 exports.maketeamlogo = (style, style2, prefix, command) => {
-    return `Contoh: ${prefix + command} nama|${style}\nUsage: ${prefix + command} zeeone|${style2}`
+    return `Example: ${prefix + command} nama|${style}\nUsage: ${prefix + command} zeeone|${style2}`
 }
 
 exports.MaketeamlogoT = (a, b, c, d, e, f, g, h) => {
-    return `Contoh: ${g + h} ${a}|${b}|${c}\nUsage: ${g + h} ${e}|${f}|${d}`
+    return `Example : ${g + h} ${a}|${b}|${c}\nUsage: ${g + h} ${e}|${f}|${d}`
 }
 exports.maketeamlogo_ = (style, style2) => {
-    return `*${style2} Yg Kamu Masukkan Salah*\n\n_Berikut List ${style2} Yg Benar, Total_ *${style}* _${style2}_\n\n`
+    return `*${style2} What you entered is wrong*\n\n_Here's a List ${style2} Correct, Total_ *${style}* _${style2}_\n\n`
 }
 
 exports.KisahNabi = (prefix, command, style, style2 = "query") => {
-    return `Kirim perintah: \n${prefix + command} ${style2}\n\nContoh penggunaan:\n${prefix + command} ${style}`
+    return `Send orders: \n${prefix + command} ${style2}\n\nExamples of use:\n${prefix + command} ${style}`
 }
 exports.quran2 = (prefix, command, juz , brp) => {
-    return `Contoh : ${prefix + command} ${juz}\nUsage: ${prefix + command} ${brp}`
+    return `Example : ${prefix + command} ${juz}\nUsage: ${prefix + command} ${brp}`
 }
 
 exports.quran3 = (prefix, command, surah , ayat, brp, brp2) => {
-return`Contoh penggunaan : ${prefix + command} ${surah}|${ayat}\nUsage: ${prefix + command} ${brp}|${brp2}`
+return`Example : ${prefix + command} ${surah}|${ayat}\nUsage: ${prefix + command} ${brp}|${brp2}`
 }
 
 exports.JwbErr = () => {
-    return `❌ Jawaban Salah`
+    return `❌ Wrong answer`
 }
 
 exports.JwbTrue = (tebak, exp) => {
-return`🎮 ${tebak} 🎮\n\nJawaban Benar 🎉\n+${exp} XP`
+return`🎮 ${tebak} 🎮\n\nCorrect answer 🎉\n+${exp} XP`
 }
 exports.TbGam = () => {
-    return `Tebak Gambar`
+    return `Guess the picture`
 }
 exports.TbKa = () => {
-    return `Tebak Kata`
+    return `Guess the word`
 }
 exports.TbBe = () => {
-    return `Tebak Bendera`
+    return `Guess the Flag`
 }
 exports.TbCak = () => {
     return `Cak Lontong`
 }
 exports.TbSu = () => {
-    return `Susun Kata`
+    return `Arrange Words`
 }
 exports.TbAt = () => {
-    return `Tebak Kalimat`
+    return `Guess the Sentence`
 }
 exports.TbSi = () => {
-    return `Tebak Siapa`
+    return `Guess who`
 }
 exports.Tbte = () => {
     return `Teka Teki`
 }
 exports.TbEn = () => {
-    return `Tebak Kabupaten`
+    return `Guess the District`
 }
 exports.TbKi = () => {
-    return `Tebak Kimia`
+    return `Guess Chemistry`
 }
 exports.TbLi = () => {
-    return `Tebak Lirik`
+    return `Guess the Lyrics`
 }
 exports.TbKan = () => {
-    return `Tebak Tebakan`
+    return `Riddles`
 }
 
 exports.TbFamily = (soal, jawaban, find) => {
-    return `*Jawablah Pertanyaan Berikut :*\n${soal}\n\nTerdapat *${jawaban}* Jawaban ${find}`
+    return `*Answer the following questions :*\n${soal}\n\nThere is *${jawaban}* Answer ${find}`
 }
 
 exports.TbAfk = (nama, afk) => {
-    return `${nama} Telah Afk Dengan Alasan ${afk ? ': ' + afk : 'Nothing'}`
+    return `${nama} Has Afk With Reason ${afk ? ': ' + afk : 'Nothing'}`
 }
 
 exports.TbGambar = (desk, time, exp) => {
-    return `Silahkan Jawab Soal Di Atas Ini\n\nDeskripsi : ${desk}\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `Please answer the questions above\n\nDescription : ${desk}\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbGambar_ = (jawaban) => {
-    return `Waktu Habis\nJawaban:  ${jawaban}`
+    return `Time has run out\nAnswer:  ${jawaban}`
 }
 exports.TbGambar__ = (jawaban, desk) => {
-    return `Waktu Habis\nJawaban:  ${jawaban}}\nDeskripsi : ${desk}`
+    return `Time has run out\nAnswer:  ${jawaban}}\nDescription : ${desk}`
 }
 exports.TbKata = (soal, time, exp) => {
-    return `Silahkan Jawab Pertanyaan Berikut\n\n${soal}\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `Please Answer The Following Questions\n\n${soal}\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbBendera = (time, exp) => {
-    return `Silahkan Jawab Pertanyaan Diatas\n\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `Please Answer The Question Above\n\nWaktu : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbKabupaten = (time, exp) => {
-    return `Gambar Diatas Adalah Gambar dari Kabupaten?\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `The picture above is a picture of the district?\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbKimia = (soal, time, exp) => {
-    return `Apa Arti Dari Simbol : *${soal}*?\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `What does the symbol mean? : *${soal}*?\nWaktu : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbLirik = (soal, time, exp) => {
-    return `Ini Adalah Lirik Dari Lagu? : *${soal}*?\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `These are the lyrics of the song? : *${soal}*?\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbSusun = (soal, tipe, time, exp) => {
-    return `*Jawablah Pertanyaan Berikut :*\nSoal : ${soal}\nTipe : ${tipe}\nWaktu : ${time} detik\nHadiah : ${exp} XP`
+    return `*Answer the following questions :*\nQuestion : ${soal}\nType : ${tipe}\nTime : ${time} seconds\n Reward : ${exp} XP`
 }
 exports.TbMath = (modes, prefix, command) => {
-    return `Mode: ${modes}\nContoh penggunaan: ${prefix + command} medium`
+    return `Mode: ${modes}\nUsage examples: ${prefix + command} medium`
 }
 exports.TbMath_ = (soal, time) => {
-    return `*Berapa hasil dari: ${soal}*?\n\nWaktu: ${time} detik`
+    return `*What is the result of: ${soal}*?\n\nTime: ${time} detik`
 }
 exports.TbJail = (prefix, command) => {
-    return `Kirim/Reply Foto/Sticker Dengan Caption ${prefix + command}`
+    return `Send/Reply Photo/Sticker With Caption ${prefix + command}`
 }
 exports.TbRepo = (prefix, command) => {
-    return `Kirim perintah ${prefix + command} *user* *repo* *branch*\n\nExp. ${prefix + command} *zeeone-ofc* *Alphabot-Md* *v12*`
+    return `Send command ${prefix + command} *user* *repo* *branch*\n\nExp. ${prefix + command} *zeeone-ofc* *Alphabot-Md* *v12*`
 }
 exports.StalkIg = () => {
-    return `Masukkan username`
+    return `Enter username`
 }
 exports.Tomp4 = (prefix, command) => {
-    return `Reply stiker gif dengan caption ${prefix + command}`
+    return `Reply gif sticker with caption ${prefix + command}`
 }
 exports.Tourl = (prefix, command) => {
-    return `Kirim/Reply Media Dengan Caption ${prefix + command}`
+    return `Send/Reply Media With Caption ${prefix + command}`
 }
 exports.Smeme = (prefix, command) => {
-    return `Kirim/Reply Foto Dengan Caption ${prefix + command} *teks*`
+    return `Send/Reply Photo With Caption ${prefix + command} *teks*`
 }
 exports.Smeme_ = (prefix, command) => {
-    return `Kirim/Reply Foto Dengan Caption ${prefix + command} *teks|tesk2*`
+    return `Send/Reply Photo With Caption ${prefix + command} *teks|tesk2*`
 }
 exports.Bcall = (anu, time, chat) => {
-    return `Mengirim Broadcast Ke ${anu} ${chat}\nWaktu Selesai ${time * 1.5} detik`
+    return `Send Broadcast To ${anu} ${chat}\nTime's up ${time * 1.5} detik`
 }
 exports.Stag = (prefix, command) => {
-    return `Reply sticker dengan caption ${prefix + command}`
+    return `Reply sticker with caption ${prefix + command}`
 }
 exports.Vtag = (prefix, command, video) => {
-    return `Kirim/reply ${video} dengan caption ${prefix + command}`
+    return `Send/reply ${video} with caption ${prefix + command}`
 }
 exports.TrLate = (prefix, command) => {
-    return `Contoh :
+    return `Example :
 
-1. Kirim perintah ${prefix + command} *kode bahasa* *teks*
-	• Contoh : ${prefix + command} id halo
-2. Reply chat dengan caption ${prefix + command} *kode bahasa*
-	• Contoh : ${prefix + command} id
-Daftar bahasa yang di dukung : https://cloud.google.com/translate/docs/languages`
+1. Send command ${prefix + command} *language code* *teks*
+	• Example : ${prefix + command} id hi
+2. Reply chat with caption ${prefix + command} *language code*
+	• Example : ${prefix + command} id hi
+List of supported languages : https://cloud.google.com/translate/docs/languages`
 }
 exports.Addlist = () => {
-    return `Key tidak boleh sama dengan fitur / command bot`
+    return `Key cannot be the same as feature/command bot`
 }
 exports.Addlist_ = (prefix, command) => {
-    return `Gunakan dengan cara ${prefix + command} *key|response*\n\n_Contoh_\n\n${prefix + command} Hi|Halo`
+    return `Use it in a way ${prefix + command} *key|response*\n\n_Example_\n\n${prefix + command} Hi|Halo`
 }
 exports.Addlist__ = (arg) => {
-    return `List respon dengan key : *${arg}* sudah ada di group ini.`
+    return `List of responses with key : *${arg}* already in this group.`
 }
 exports.AddlistDone = (arg) => {
-    return `Sukses set list message dengan key : *${arg}*\n\nNote : Tunggu beberapa menit jika list tidak berubah`
+    return `Successfully set list message with key : *${arg}*\n\nNote : Wait a few minutes if the list doesn't change`
 }
 exports.Dellist = () => {
-    return `Belum ada list message di database`
+    return `There is no message list in the database`
 }
 exports.Dellist_  = (prefix, command) => {
-    return `Gunakan dengan cara ${prefix + command} *key*\n\n_Contoh_\n\n${prefix + command} Hi`
+    return `Use it in a way ${prefix + command} *key*\n\n_Example_\n\n${prefix + command} Hi`
 }
 exports.Dellist__ = (key) => {
-    return `List respon dengan key *${key}* tidak ada di database!`
+    return `List response with key *${key}* not in database!`
 }
 exports.DellistDone = (key) => {
-    return `Sukses delete list message dengan key *${key}*`
+    return `Successfully delete list message with key *${key}*`
 }
 exports.ListUp = (key) => {
-    return `Maaf, untuk key *${key}* belum terdaftar di group ini`
+    return `Sorry, the key *${key}* is not yet registered in this group`
 }
 exports.UpList = (key) => {
-    return `Sukses update list message dengan key : *${key}*\n\nNote : Tunggu beberapa menit jika list tidak berubah`
+    return `Successfully update list message with key : *${key}*\n\nNote : Wait a few minutes if the list doesn't change`
 }
 exports.Anonymous = (pushname, prefix) => {
-    return `Hai ${pushname} Selamat Datang di Anonymous Chat\n\nKetik ${prefix}start untuk mencari Teman Chat anda, atau bisa pencet tombol Search dibawah`
+    return `Hi ${pushname} Welcome to Anonymous Chat\n\nType ${prefix}start to find your Chat Friend, or you can press the Search button below`
 }
 exports.Anon = () => {
-    return `Cari Teman Chat`
+    return `Find Friends Chat`
 }
 exports.StopAnon = (prefix) => {
-    return `Kamu Sedang Tidak Berada Di Sesi Anonymous\n${prefix}start -- _cari pasangan baru_`
+    return `You are not in an anonymous session\n${prefix}start -- _cari pasangan baru_`
 }
 exports.AnonNew = () => {
-    return `Cari Teman Baru`
+    return `Find New Friends`
 }
 exports.AnonDahStop = (prefix) => {
-    return `✅ Berhasil memberhentikan chat\n${prefix}start -- _cari pasangan baru_`
+    return `✅ Successfully stopped chat\n${prefix}start -- _cari pasangan baru_`
 }
 exports.StopAnonByFren = (prefix) => {
-    return `⚠️ Sesi chat ini telah diberhentikan oleh teman chat kamu_\n${prefix}start -- _cari pasangan baru_`
+    return `⚠️ This chat session has been terminated by your chat friend\n${prefix}start -- _cari pasangan baru_`
 }
 exports.AnonOn = (prefix) => {
-    return `⚠️ Kamu masih dalam sesi chat dengan partner!\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan dialog ini_`
+    return `️ You are still in a chat session with a partner\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan dialog ini_!`
 }
 exports.AnonFind = (prefix) => {
-    return `_Pasangan Ditemukan 🐼_\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan dialog ini_`
+    return `_Partner Found 🐼_\n${prefix}skip -- _find a new partner_\n${prefix}stop -- _stop this dialog_`
 }
 exports.AnonSearch = (prefix) => {
-    return `🔎 Mohon tunggu sedang mencari teman chat\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan percarian ini_`
+    return `🔎 Please wait looking for chat friends\n${prefix}skip -- _cari pasangan baru_\n${prefix}stop -- _hentikan percarian ini_`
 }
 exports.NoAnon = (prefix) => {
-    return `⚠️ Kamu belum pernah memulai chat!\n${prefix}start -- _cari pasangan baru_`
+    return `⚠️ You've never started a chat!\n${prefix}start -- _cari pasangan baru_`
 }
 exports.NoAudRep = (prefix, command) => {
-    return `Balas audio yang ingin diubah dengan caption *${prefix + command}*`
+    return `Reply to the audio you want to change with caption *${prefix + command}*`
+}
+exports.NoTagBan = () => {
+    return `Usage examples :\n${prefix + command} 62938828728992 \nor\n${prefix + command} @tagmember`
 }
 
-exports.NoTagBan = (prefix, command) => {
-    return `Contoh penggunaan :\n${prefix + command} 62938828728992 \natau\n${prefix + command} @tagmember`
-}
 exports.getBan = (a) => {
-    return `⚠️ Mohon maaf nomor kamu telah di banned oleh owner\n\nOwner 👇\nwa.me/${a}`
+    return `⚠️ Sorry, your number has been banned by the owner\n\nOwner 👇\nwa.me/${a}`
 }
 exports.Addstik = (prefix, command, t) => {
-    return `Reply ${t} dengan caption ${prefix + command} text\n\nExample : ${prefix + command} bot`
+    return `Reply ${t} with caption ${prefix + command} text\n\nExample : ${prefix + command} bot`
 }
+
 exports.AllFitur = () => {
-    return `\n_Semua fitur bot_`
+    return `\nAll bot features`
 }
 exports.InfoMenu = () => {
-    return `\n_Mencari informasi terkini melalui bot_`
+    return `\n_Looking for the latest information via bot_`
 }
 exports.KhususOwn = () => {
-    return `\n_Fitur khusus owner bot_`
+    return `\n_Owner Bots Special Features_`
 }
 exports.DataBor = () => {
-    return `\n_Menyimpan sesuatu di database bot_`
+    return `\n_Storing something in the bot database_`
 }
 exports.MenuGc = () => {
-    return `\n_Menampilkan fitur khusus group_`
+    return `\n_Show group specific features_`
 }
 exports.MenuAni = () => {
-    return `\n_Mencari random gambar anime_`
+    return `\n_Looking for random anime pictures_`
 }
 exports.TagMem = () => {
-    return `\n_Menandai member group_`
+    return `\n_Tag group member_`
 }
 exports.StalkOrk = () => {
-    return `\n_Kepoin sosmed orang_`
+    return `\n_People's social media stalking_`
 }
 exports.Hoja = () => {
-    return `\n_Mencari sesuatu yang gk penting_`
+    return `\n_Looking for something unimportant_`
 }
 exports.CovertWi = () => {
-    return `\n_Mengkorversi sesuatu dengan bot_`
+    return `\n_Convert something with bot_`
 }
 exports.AnuFoto = () => {
-    return `\n_Mengubah gambar jadi lebih menarik_`
+    return `\n_Change the picture to be more interesting_`
 }
 exports.HajuStik = () => {
-    return `\n_Membuat stiker yang unik_`
+    return `\n_Create unique stickers_`
 }
 exports.EloDown= () => {
-    return `\n_Menampilkan fitur download_`
+    return `\n_Show download feature_`
 }
 exports.StikerWibu = () => {
-    return `\n_Random stiker anime_`
+    return `\n_Random anime stickers_`
 }
 exports.ImageDewasa = () => {
     return `\n_Random image anime 18+_`
 }
 exports.MakeLogo = () => {
-    return `\n_Untuk membuat logo menggunakan bot_`
+    return `\n_To create a logo using a bot_`
 }
 exports.oterMenu = () => {
-    return `\n_Menu lainnya_`
+    return `\n_More menu_`
 }
 exports.GameBot = () => {
-    return `\n_Fitur untuk bermain dengan bot_`
+    return `\n_Features for playing with bots_`
 }
 exports.RandRik = () => {
-    return `\n_Random video tiktok_`
+    return `\n_Random tiktok videos_`
 }
 exports.RandCew = () => {
-    return `\n_Random gambar cewe cantik_`
+    return `\n_Random pictures of beautiful girls_`
 }
 exports.RamalOi = () => {
-    return `\n_Ramalan masa kini_`
+    return `\n_Today's forecast_`
 }
 exports.TeleStik= () => {
-    return `\n_Random stiker dari telegram_`
+    return `\n_Random sticker from telegram_`
 }
 exports.BuatLogoLagi = () => {
-    return `\n_Membuat logo keren dengan bot_`
+    return `\n_Create cool logos with bots_`
 }
 exports.SoundNih= () => {
     return `\n_Random sound_`
 }
 exports.KanLogoLagi = () => {
-    return `\n_Membuat logo menarik_`
+    return `\n_Make an attractive logo_`
 }
 exports.TobatBro = () => {
-    return `\n_Fitur islami_`
+    return `\n_Islamic features_`
 }
 exports.MauJualan = () => {
-    return `\n_Fitur untuk berjualan_`
+    return `\n_Features for selling_`
 }
 exports.Maustorage = () => {
-    return `\n_Fitur untuk menyimpan stiker, audio, foto dan video_`
+    return `\n_Features to save stickers, audio, photos and videos_`
 }
 exports.MauChanger = () => {
-    return `\n_Fitur untuk mengubah suara audio / vn_`
+    return `\n_Feature to change audio/vn sound_`
 }
 exports.GadaChat = () => {
-    return `\n_Fitur untuk melakukan chat random_`
+    return `\n_Features for random chat_`
 }
 exports.SumberBot = () => {
-    return `\n_Sumber script bot ini_`
+    return `\n_Source of this bot script_`
 }
 exports.Tqnya = () => {
-    return `\n_Siapa aja yang berkontribusi di dalam bot ini_`
+    return `\n_Who contributed to this bot_`
 }
 exports.SetAh = () => {
-    return `Mau set menu ya ?`
+    return `Do you want a set menu?`
 }
 exports.KickAh = (gc) => {
-    return `*Antilink Group Terdeteksi*\n\nKamu akan dikeluarkan dari group ${gc}`
+    return `*Antilink Group Detected*\n\nYou will be removed from the group ${gc}`
     }
     exports.GjdKick = () => {
-    return `Sepertinya kamu mengirimkan link group ini, kamu tidak akan di keluarkan`
+    return `Looks like you sent this group link, you won't be kicked out`
     }
 /////////
 
 /////////
 exports.private = () =>{
-	return`Fitur hanya bisa di gunakan di private chat`
+	return`The feature can only be used in private chat`
 	}
 exports.wait = () => {
-    return `⏳ Mohon tunggu sebentar`
+    return `⏳ Please wait a moment`
 }
 exports.ok = () => {
     return `✅ Done.`
 }
 
 exports.err = () => {
-    return `⚠️ Fitur Sedang Error`
+    return `⚠️ Error Moderate Features`
 }
 exports.erorLink = () => {
-    return `⚠️ Link nya error`
+    return `⚠️ The link is error`
 }
 exports.media = () => {
-    return `Silahkan pilih media yang ingin kamu download`
+    return `Please select the media you want to download`
 }
 exports.replyImg = (prefix, command) => {
-    return `Kirim/Reply Foto Dengan Caption ${prefix + command}`
+    return `Send/Reply Photo With Caption ${prefix + command}`
 }
 
 exports.wrongFormat = (prefix) => {
-    return `Format salah ❎ Silakan cek cara penggunaan di *${prefix}allmenu*.`
+    return `Incorrect format Please check how to use at *${prefix}allmenu*.`
 }
 
 exports.emptyMess = () => {
-    return `❎ Harap masukkan pesan yang ingin disampaikan!`
+    return `❎ Please enter the message you want to convey!`
 }
 
 exports.cmdNotFound = (cmd, prefix) => {
-    return `❎ Command *${cmd}* tidak terdaftar di *${prefix}allmenu*`
+    return `❎ Command *${cmd}* not registered in *${prefix}allmenu*`
 }
 
 exports.ownerOnly = () => {
-    return `❎ Command ini khusus Owner`
+    return `❎ This command is for the owner`
 }
 
 exports.doneOwner = () => {
-    return `✅  ️Sudah selesai, Owner ~`
+    return `✅  ️It's done, Owner ~`
 }
 
 exports.groupOnly = () => {
-    return `👥  Command ini hanya bisa digunakan di dalam grup!`
+    return `👥  This command can only be used in groups!`
 }
 
 exports.adminOnly = () => {
-    return `🙅  Command ini hanya bisa digunakan oleh admin grup!`
+    return `🙅  This command can only be used by group admins!`
 }
 
 exports.nhFalse = () => {
-    return `Kode tidak valid!`
+    return `Invalid code!`
 }
 
 exports.listBlock = (blockNumber) => {
     return `*── 「 HALL OF SHAME 」 ──*
     
-Total diblokir: *${blockNumber.length}* user\n`
+Totally blocked: *${blockNumber.length}* user\n`
 }
 
 exports.notAdmin = () => {
-    return `❎ User bukan seorang admin! ❎`
+    return `❎ User is not an admin! ❎`
 }
 
 exports.adminAlready = () => {
-    return `❎ Tidak  dapat mem-promote user yang merupakan admin!`
+    return `❎ Cannot promote a user who is an admin!`
 }
 
 exports.botNotAdmin = () => {
-    return `Jadikan bot sebagai admin terlebih dahulu! 🙏`
+    return `Make bot as admin first! `
 }
 
 exports.received = (pushname) => {
     return `
-Halo ${pushname}!
-Terima kasih telah melapor, laporanmu akan kami segera terima.`
+Hello ${pushname}!
+Thank you for reporting, we will receive your report soon.`
 }
 
 exports.videoLimit = () => {
-    return `Ukuran file terlalu besar!`
+    return `File size is too big!`
 }
 
 exports.notNum = (q) => {
-    return `"${q}", bukan angka!`
+    return `"${q}", not numbers!`
 }
 exports.menunya = (salam, pushname, botname) =>{
-	return`Hai kak ${pushname} 👋 selamat ${salam} , 
-saya ${botname}, bot ini adalah Beta Multi-Device Whatsapp.
+	return`Hi bro ${pushname} 👋 good ${salam} , 
+i'm ${botname}, this bot is Whatsapp Multi-Device Beta.
 `
 }
 exports.listMenu = (prefix) => {
@@ -832,7 +844,7 @@ exports.listMenu2 = (prefix) => {
 
 
 ╭─❒ 「 Owner 」 
-│○ ${prefix}setmenu
+│○ ${prefix}setmenu 
 │○ ${prefix}setwm
 │○ ${prefix}sendsesi
 │○ ${prefix}listpc
@@ -866,7 +878,7 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}antidelete 
 │○ ${prefix}autobio 
 │○ ${prefix}anticall 
-│○ ${prefix}join
+│○ ${prefix}join 
 │○ ${prefix}self
 │○ ${prefix}public [only bot]
 │○ ${prefix}del [reply pesan bot]
@@ -919,10 +931,10 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}cekabsen
 │○ ${prefix}deleteabsen
 │○ ${prefix}absenstart
-│○ ${prefix}addmsg
-│○ ${prefix}getmsg
+│○ ${prefix}addmsg 
+│○ ${prefix}getmsg 
 │○ ${prefix}listmsg
-╰❒ ${prefix}delmsg
+╰❒ ${prefix}delmsg 
 
 ╭─❒ 「 Rpg Games 」
 │○ ${prefix}adventure
@@ -977,7 +989,7 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}ceksn
 │○ ${prefix}listonline
 │○ ${prefix}sider
-│○ ${prefix}wm packname|author
+│○ ${prefix}wm
 │○ ${prefix}infochat
 │○ ${prefix}setdesk 
 │○ ${prefix}setppgrup 
@@ -985,7 +997,7 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}setpppanjanggc
 │○ ${prefix}revoke
 │○ ${prefix}leave
-│○ ${prefix}add
+│○ ${prefix}add 
 │○ ${prefix}kick
 │○ ${prefix}leave
 │○ ${prefix}linkgc
@@ -1023,58 +1035,58 @@ exports.listMenu2 = (prefix) => {
 
 ╭─❒ 「 Anime 」 
 │○ ${prefix}quotesanime
-│○ ${prefix}anime
+│○ ${prefix}anime 
 │○ ${prefix}animeinfo
-│○ ${prefix}manga
-╰❒ ${prefix}character
+│○ ${prefix}manga 
+╰❒ ${prefix}character 
 
 ╭─❒ 「 Tag 」 
 │○ ${prefix}stickertag
-│○ ${prefix}videotag
-│○ ${prefix}vntag
-╰❒ ${prefix}imagetag
+│○ ${prefix}videotag 
+│○ ${prefix}vntag 
+╰❒ ${prefix}imagetag 
 
 ╭─❒ 「 Stalking 」 
-│○ ${prefix}mlstalk [id|zona id]
-│○ ${prefix}ffstalk [id]
+│○ ${prefix}mlstalk
+│○ ${prefix}ffstalk
 │○ ${prefix}igstalk 
 │○ ${prefix}ghstalk 
-╰❒ ${prefix}ytstalk [channel]
+╰❒ ${prefix}ytstalk
 
 
 ╭─❒ 「 Search 」 
-│○ ${prefix}ytsearch
-│○ ${prefix}openai
-│○ ${prefix}openaiimg
-│○ ${prefix}aidraw
-│○ ${prefix}chatgpt
-│○ ${prefix}githubsearch
-│○ ${prefix}kbbi
-│○ ${prefix}lirik
-│○ ${prefix}wallpaper
-│○ ${prefix}google
-│○ ${prefix}wikimedia
+│○ ${prefix}ytsearch 
+│○ ${prefix}openai 
+│○ ${prefix}openaiimg 
+│○ ${prefix}aidraw 
+│○ ${prefix}chatgpt 
+│○ ${prefix}githubsearch 
+│○ ${prefix}kbbi 
+│○ ${prefix}lirik 
+│○ ${prefix}wallpaper 
+│○ ${prefix}google 
+│○ ${prefix}wikimedia 
 │○ ${prefix}apksearch
 │○ ${prefix}findapk
 │○ ${prefix}hentai
-│○ ${prefix}wattpad
-│○ ${prefix}webtoons
-│○ ${prefix}brainly
-╰❒ ${prefix}pinterest
+│○ ${prefix}wattpad 
+│○ ${prefix}webtoons 
+│○ ${prefix}brainly 
+╰❒ ${prefix}pinterest 
 
 
 ╭─❒ 「 Converter 」
-│○ ${prefix}emoji [😭]
-│○ ${prefix}emojimix [😭+💩]
-│○ ${prefix}toaudio
-│○ ${prefix}tomp3
-│○ ${prefix}tovn
+│○ ${prefix}emoji
+│○ ${prefix}emojimix
+│○ ${prefix}toaudio 
+│○ ${prefix}tomp3 
+│○ ${prefix}tovn 
 │○ ${prefix}stiker 
-│○ ${prefix}tourl
-│○ ${prefix}ssweb [url]
-│○ ${prefix}togif
-│○ ${prefix}tomp4
-╰❒${prefix}toimg [reply sticker]
+│○ ${prefix}tourl 
+│○ ${prefix}ssweb 
+│○ ${prefix}togif 
+│○ ${prefix}tomp4 
+╰❒ ${prefix}toimg 
 
 
 ╭─❒ 「 Image Effect 」 
@@ -1137,37 +1149,37 @@ exports.listMenu2 = (prefix) => {
 
 
 ╭─❒ 「 Download 」 
-│○ ${prefix}tiktok
-│○ ${prefix}tiktoknowm
-│○ ${prefix}tiktokwm
-│○ ${prefix}tiktokaudio
-│○ ${prefix}ytdl
-│○ ${prefix}play
-│○ ${prefix}ytmp3
-│○ ${prefix}ytshortmp3
-│○ ${prefix}ytmp4
-│○ ${prefix}ytshorts
-│○ ${prefix}facebook
-│○ ${prefix}facebooksd
-│○ ${prefix}facebookhd
-│○ ${prefix}fbaudio
+│○ ${prefix}tiktok 
+│○ ${prefix}tiktoknowm 
+│○ ${prefix}tiktokwm 
+│○ ${prefix}tiktokaudio 
+│○ ${prefix}ytdl 
+│○ ${prefix}play 
+│○ ${prefix}ytmp3 
+│○ ${prefix}ytshortmp3 
+│○ ${prefix}ytmp4 
+│○ ${prefix}ytshorts 
+│○ ${prefix}facebook 
+│○ ${prefix}facebooksd 
+│○ ${prefix}facebookhd 
+│○ ${prefix}fbaudio 
 │○ ${prefix}igstory 
-│○ ${prefix}igdl
-│○ ${prefix}igphoto
-│○ ${prefix}igvideo
-│○ ${prefix}igreels
-│○ ${prefix}igtv
-│○ ${prefix}soundcloud
-│○ ${prefix}gitclone [link repo]
-│○ ${prefix}gitrepo [username repo branch]
-│○ ${prefix}mediafire
-│○ ${prefix}nhentaipdf [id]
-╰❒ ${prefix}twitter link
+│○ ${prefix}igdl 
+│○ ${prefix}igphoto 
+│○ ${prefix}igvideo 
+│○ ${prefix}igreels 
+│○ ${prefix}igtv 
+│○ ${prefix}soundcloud 
+│○ ${prefix}gitclone 
+│○ ${prefix}gitrepo 
+│○ ${prefix}mediafire 
+│○ ${prefix}nhentaipdf
+╰❒ ${prefix}twitter
 
 ╭─❒ 「 Primbon 」
-│○ ${prefix}nomorhoki 887435047326
-│○ ${prefix}artimimpi
-│○ ${prefix}artinama
+│○ ${prefix}nomorhoki
+│○ ${prefix}artimimpi 
+│○ ${prefix}artinama 
 │○ ${prefix}ramaljodoh
 │○ ${prefix}ramaljodohbali
 │○ ${prefix}suamiistri
@@ -1194,7 +1206,7 @@ exports.listMenu2 = (prefix) => {
 │○ ${prefix}memancing
 │○ ${prefix}masasubur
 │○ ${prefix}zodiak 
-╰❒ ${prefix}shio
+╰❒ ${prefix}shio 
 
 ╭─❒ 「 Random Anime 」
 │○ ${prefix}loli
@@ -1608,10 +1620,10 @@ exports.listMenu2 = (prefix) => {
  
 
 ╭─❒ 「 Others 」
-│○ ${prefix}afk
-│○ ${prefix}translate
-│○ ${prefix}tts
-│○ ${prefix}kalkulator
+│○ ${prefix}afk 
+│○ ${prefix}translate code_language 
+│○ ${prefix}tts kode_bahasa 
+│○ ${prefix}kalkulator 
 │○ ${prefix}smeme 
 │○ ${prefix}smeme2 
 │○ ${prefix}memegen 
@@ -1769,13 +1781,13 @@ exports.listMenu2 = (prefix) => {
 
 ╭─❒ 「 Islamic Menu 」
 │○ ${prefix}asmaulhusna
-│○ ${prefix}kisahnabi
+│○ ${prefix}kisahnabi 
 │○ ${prefix}jadwalshalat
 │○ ${prefix}randomquran
 │○ ${prefix}randomquran2
 │○ ${prefix}listsurah
-│○ ${prefix}tafsirsurah
-╰❒ ${prefix}alquranaudio
+│○ ${prefix}tafsirsurah 
+╰❒ ${prefix}alquranaudio 
 
 ╭─❒ 「 Sound Menu 」
 │○ ${prefix}sound1
@@ -1914,10 +1926,10 @@ exports.tos = (ownernomer) => {
     return `
 *-------「 DONATE 」 -------*
 
-Hai kak ☺️ 
-Kalian bisa mendukung saya agar bot ini tetap up to date dengan cara donasi
+Hi bro ☺️ 
+You can support me to keep this bot up to date by donating
 
-Berapapun donasi kalian akan sangat berarti 👍
+Any amount of your donation will be very meaningful 👍
 Thanks!
 
 Contact person Owner:
@@ -1947,7 +1959,7 @@ return`╭─❒ 「 Owner 」
 │○ ${prefix}broadcast 
 │○ ${prefix}bc 
 │○ ${prefix}bcgc 
-│○ ${prefix}pushkontak 
+│○ ${prefix}pushkontak  
 │○ ${prefix}bcimage
 │○ ${prefix}bcaudio
 │○ ${prefix}bcstiker
@@ -1973,13 +1985,13 @@ return`╭─❒ 「 Owner 」
 │○ ${prefix}antidelete 
 │○ ${prefix}autobio 
 │○ ${prefix}anticall 
-│○ ${prefix}join
+│○ ${prefix}join 
 │○ ${prefix}self
-│○ ${prefix}public
-│○ ${prefix}del
+│○ ${prefix}public [only bot]
+│○ ${prefix}del [reply pesan bot]
 │○ ${prefix}pppanjang
 │○ ${prefix}setpppanjang
-╰❒ ${prefix}setppbot
+╰❒ ${prefix}setppbot 
 `}
 
 exports.database = (prefix) =>{
@@ -1991,10 +2003,10 @@ exports.database = (prefix) =>{
 │○ ${prefix}cekabsen
 │○ ${prefix}deleteabsen
 │○ ${prefix}absenstart
-│○ ${prefix}addmsg
-│○ ${prefix}getmsg
+│○ ${prefix}getmsg 
+│○ ${prefix}addmsg 
 │○ ${prefix}listmsg
-╰❒ ${prefix}delmsg
+╰❒ ${prefix}delmsg 
 `}
 
 exports.group = (prefix) =>{
@@ -2017,8 +2029,8 @@ exports.group = (prefix) =>{
 │○ ${prefix}setpppanjanggc
 │○ ${prefix}revoke
 │○ ${prefix}leave
-│○ ${prefix}add
-│○ ${prefix}kick
+│○ ${prefix}add 
+│○ ${prefix}kick @tag
 │○ ${prefix}leave
 │○ ${prefix}linkgc
 │○ ${prefix}welcome 
@@ -2049,7 +2061,7 @@ exports.group = (prefix) =>{
 │○ ${prefix}antibadword
 │○ ${prefix}antibadword2
 │○ ${prefix}take
-│○ ${prefix}group
+│○ ${prefix}group 
 │○ ${prefix}tagall 
 ╰❒ ${prefix}hidetag 
 `}
@@ -2057,23 +2069,23 @@ exports.group = (prefix) =>{
 exports.anime = (prefix) =>{
 	return`╭─❒ 「 Anime 」 
 │○ ${prefix}quotesanime
-│○ ${prefix}anime
+│○ ${prefix}anime 
 │○ ${prefix}animeinfo
-│○ ${prefix}manga
-╰❒ ${prefix}character
+│○ ${prefix}manga 
+╰❒ ${prefix}character 
 `}
 
 exports.tag = (prefix) =>{
 	return`╭─❒ 「 Tag 」 
 │○ ${prefix}stickertag
-│○ ${prefix}videotag
-│○ ${prefix}vntag
-╰❒ ${prefix}imagetag
+│○ ${prefix}videotag 
+│○ ${prefix}vntag 
+╰❒ ${prefix}imagetag 
 `}
 
 exports.stalk = (prefix) =>{
 	return`╭─❒ 「 Stalking 」 
-│○ ${prefix}mlstalk 
+│○ ${prefix}mlstalk
 │○ ${prefix}ffstalk
 │○ ${prefix}igstalk 
 │○ ${prefix}ghstalk 
@@ -2082,38 +2094,38 @@ exports.stalk = (prefix) =>{
 
 exports.search = (prefix) =>{
 	return`╭─❒ 「 Search 」 
-│○ ${prefix}ytsearch
-│○ ${prefix}openai
-│○ ${prefix}openaiimg
-│○ ${prefix}aidraw
-│○ ${prefix}chatgpt
-│○ ${prefix}githubsearch
-│○ ${prefix}kbbi
-│○ ${prefix}lirik
-│○ ${prefix}wallpaper
-│○ ${prefix}google
-│○ ${prefix}wikimedia
+│○ ${prefix}ytsearch 
+│○ ${prefix}openai 
+│○ ${prefix}openaiimg 
+│○ ${prefix}aidraw 
+│○ ${prefix}chatgpt 
+│○ ${prefix}githubsearch 
+│○ ${prefix}kbbi 
+│○ ${prefix}lirik 
+│○ ${prefix}wallpaper 
+│○ ${prefix}google 
+│○ ${prefix}wikimedia 
 │○ ${prefix}apksearch
 │○ ${prefix}findapk
 │○ ${prefix}hentai
-│○ ${prefix}wattpad
-│○ ${prefix}webtoons
-│○ ${prefix}brainly
-╰❒ ${prefix}pinterest
+│○ ${prefix}wattpad 
+│○ ${prefix}webtoons 
+│○ ${prefix}brainly 
+╰❒ ${prefix}pinterest 
 `}
 
 exports.converter = (prefix) =>{
 	return`╭─❒ 「 Converter 」 
 │○ ${prefix}emoji
 │○ ${prefix}emojimix
-│○ ${prefix}toaudio
-│○ ${prefix}tomp3
-│○ ${prefix}tovn
-│○ ${prefix}stiker 
-│○ ${prefix}tourl
-│○ ${prefix}ssweb
-│○ ${prefix}togif
-│○ ${prefix}tomp4
+│○ ${prefix}toaudio 
+│○ ${prefix}tomp3 
+│○ ${prefix}tovn 
+│○ ${prefix}stiker
+│○ ${prefix}tourl 
+│○ ${prefix}ssweb 
+│○ ${prefix}togif 
+│○ ${prefix}tomp4 
 ╰❒${prefix}toimg 
 `}
 
@@ -2182,32 +2194,32 @@ exports.effect2 = (prefix) =>{
 
 exports.download = (prefix) =>{
 return`╭─❒ 「 Download 」 
-│○ ${prefix}tiktok
-│○ ${prefix}tiktoknowm
-│○ ${prefix}tiktokwm
-│○ ${prefix}tiktokaudio
-│○ ${prefix}ytdl
-│○ ${prefix}play
-│○ ${prefix}ytmp3
-│○ ${prefix}ytshortmp3
-│○ ${prefix}ytmp4
-│○ ${prefix}ytshorts
-│○ ${prefix}facebook
-│○ ${prefix}facebooksd
-│○ ${prefix}facebookhd
-│○ ${prefix}fbaudio
+│○ ${prefix}tiktok 
+│○ ${prefix}tiktoknowm 
+│○ ${prefix}tiktokwm 
+│○ ${prefix}tiktokaudio 
+│○ ${prefix}ytdl 
+│○ ${prefix}play 
+│○ ${prefix}ytmp3 
+│○ ${prefix}ytshortmp3 
+│○ ${prefix}ytmp4 
+│○ ${prefix}ytshorts 
+│○ ${prefix}facebook 
+│○ ${prefix}facebooksd 
+│○ ${prefix}facebookhd 
+│○ ${prefix}fbaudio 
 │○ ${prefix}igstory 
-│○ ${prefix}igdl
-│○ ${prefix}igphoto
-│○ ${prefix}igvideo
-│○ ${prefix}igreels
-│○ ${prefix}igtv
-│○ ${prefix}soundcloud
-│○ ${prefix}gitclone
-│○ ${prefix}gitrepo
-│○ ${prefix}mediafire
+│○ ${prefix}igdl 
+│○ ${prefix}igphoto 
+│○ ${prefix}igvideo 
+│○ ${prefix}igreels 
+│○ ${prefix}igtv 
+│○ ${prefix}soundcloud 
+│○ ${prefix}gitclone 
+│○ ${prefix}gitrepo 
+│○ ${prefix}mediafire 
 │○ ${prefix}nhentaipdf
-╰❒ ${prefix}twitter
+╰❒ ${prefix}twitter link
 `
 }
 
@@ -2249,76 +2261,76 @@ exports.ranime = (prefix) =>{
 
 exports.nsfw = (prefix) =>{
 	return`╭─❒ 「 Nsfw & Sfw 」
-│○ ${prefix}ahegao
-│○ ${prefix}anal
-│○ ${prefix}avatar2
-│○ ${prefix}baka
-│○ ${prefix}bdsm
-│○ ${prefix}bj
-│○ ${prefix}blowjob
-│○ ${prefix}boobs
-│○ ${prefix}classic
-│○ ${prefix}cuckold
 │○ ${prefix}cuddle
-│○ ${prefix}cum
-│○ ${prefix}cumarts
-│○ ${prefix}cumsluts
-│○ ${prefix}ero
-│○ ${prefix}erofeet
-│○ ${prefix}erokemonomimi
-│○ ${prefix}erokitsune
-│○ ${prefix}eroneko
-│○ ${prefix}eroyuri
 │○ ${prefix}feed
-│○ ${prefix}feet
-│○ ${prefix}feetgif
-│○ ${prefix}femdom
-│○ ${prefix}foot
 │○ ${prefix}foxgirl
-│○ ${prefix}futanari
-│○ ${prefix}gangbang
-│○ ${prefix}girl-solo
-│○ ${prefix}girl-solo-gif
-│○ ${prefix}glasses
-│○ ${prefix}hentai
+│○ ${prefix}kemonomimi2
+│○ ${prefix}woof
+│○ ${prefix}holo2
+│○ ${prefix}hug
+│○ ${prefix}kiss
+│○ ${prefix}lizard
+│○ ${prefix}meowi
+│○ ${prefix}neko2
+│○ ${prefix}pat
+│○ ${prefix}poke
+│○ ${prefix}slap
+│○ ${prefix}tickle
+│○ ${prefix}baka
+│○ ${prefix}smug
+│○ ${prefix}neko-sfw
 │○ ${prefix}hentai
 │○ ${prefix}hentai-gif
-│○ ${prefix}holo
-│○ ${prefix}holo2
+│○ ${prefix}spank
+│○ ${prefix}blowjob
+│○ ${prefix}cumarts
+│○ ${prefix}eroyuri
+│○ ${prefix}eroneko
+│○ ${prefix}erokemonomimi
+│○ ${prefix}erokitsune
+│○ ${prefix}ero
+│○ ${prefix}feet
+│○ ${prefix}erofeet
+│○ ${prefix}feetgif
+│○ ${prefix}femdom
+│○ ${prefix}futanari
+│○ ${prefix}hentai
 │○ ${prefix}holoero
-│○ ${prefix}hug
-│○ ${prefix}jahy
-│○ ${prefix}kemonomimi
-│○ ${prefix}kemonomimi2
+│○ ${prefix}holo
 │○ ${prefix}keta
-│○ ${prefix}kiss
 │○ ${prefix}kitsune
+│○ ${prefix}kemonomimi
+│○ ${prefix}pussyart
+│○ ${prefix}pussywankgif
+│○ ${prefix}girl-solo
+│○ ${prefix}girl-solo-gif
+│○ ${prefix}tits
+│○ ${prefix}trap
+│○ ${prefix}yuri
+│○ ${prefix}avatar2
+│○ ${prefix}anal
+│○ ${prefix}bj
+│○ ${prefix}boobs
+│○ ${prefix}classic
+│○ ${prefix}cumsluts
 │○ ${prefix}kuni
 │○ ${prefix}lesbian
-│○ ${prefix}lizard
-│○ ${prefix}masturbation
-│○ ${prefix}meowi
 │○ ${prefix}neko
 │○ ${prefix}neko-gif
-│○ ${prefix}neko-sfw
-│○ ${prefix}neko2
+│○ ${prefix}ahegao
+│○ ${prefix}bdsm
+│○ ${prefix}cuckold
+│○ ${prefix}cum
+│○ ${prefix}foot
+│○ ${prefix}gangbang
+│○ ${prefix}glasses
+│○ ${prefix}jahy
+│○ ${prefix}masturbation
 │○ ${prefix}nsfw-neko
 │○ ${prefix}orgy
 │○ ${prefix}panties
-│○ ${prefix}pat
-│○ ${prefix}poke
-│○ ${prefix}pussyart
-│○ ${prefix}pussywankgif
-│○ ${prefix}slap
-│○ ${prefix}smug
-│○ ${prefix}spank
 │○ ${prefix}tentacles
 │○ ${prefix}thighs
-│○ ${prefix}tickle
-│○ ${prefix}tits
-│○ ${prefix}trap
-│○ ${prefix}woof
-│○ ${prefix}yuri
 ╰❒ ${prefix}zettai
 `
 }
@@ -2516,7 +2528,7 @@ return`╭─❒ 「 Others 」
 │○ ${prefix}afk
 │○ ${prefix}translate
 │○ ${prefix}tts
-│○ ${prefix}kalkulator
+│○ ${prefix}kalkulator 
 │○ ${prefix}smeme 
 │○ ${prefix}smeme2 
 ╰❒ ${prefix}memegen 
@@ -2605,8 +2617,8 @@ exports.tqto = () =>{
 exports.primbonmenu = (prefix) =>{
 	return`╭─❒ 「 Primbon 」
 │○ ${prefix}nomorhoki
-│○ ${prefix}artimimpi
-│○ ${prefix}artinama
+│○ ${prefix}artimimpi 
+│○ ${prefix}artinama 
 │○ ${prefix}ramaljodoh
 │○ ${prefix}ramaljodohbali
 │○ ${prefix}suamiistri
@@ -2633,7 +2645,7 @@ exports.primbonmenu = (prefix) =>{
 │○ ${prefix}memancing
 │○ ${prefix}masasubur
 │○ ${prefix}zodiak 
-╰❒ ${prefix}shio
+╰❒ ${prefix}shio 
 `
 }
 
@@ -2664,166 +2676,173 @@ exports.stcmenu = (prefix) =>{
 
 exports.ephotomenu = (prefix) =>{
 	return`╭─❒ 「 Ephoto360 Menu 」
-│○ ${prefix}1917text
-│○ ${prefix}angelwing
-│○ ${prefix}announofwin
-│○ ${prefix}birthdaycake
-│○ ${prefix}capercut
-│○ ${prefix}cardhalloween
-│○ ${prefix}cartoonstyle
-│○ ${prefix}christmascard 
-│○ ${prefix}christmasseason
-│○ ${prefix}covergamepubg
-│○ ${prefix}covergraffiti
-│○ ${prefix}dragonfire
-│○ ${prefix}embroider
-│○ ${prefix}fabrictext
-│○ ${prefix}facebookgold
-│○ ${prefix}facebooksilver
-│○ ${prefix}funnyanimations
-│○ ${prefix}funnyhalloween
-│○ ${prefix}galaxybat
-│○ ${prefix}galaxywallpaper
-│○ ${prefix}generalexam 
-│○ ${prefix}glowingtext
-│○ ${prefix}graffiti3d
-│○ ${prefix}graffititext
-│○ ${prefix}graffititext2
-│○ ${prefix}graffititext3
-│○ ${prefix}greetingcardvideo 
-│○ ${prefix}halloweenbats
-│○ ${prefix}heartcup
-│○ ${prefix}heartflashlight
-│○ ${prefix}horrorletter
-│○ ${prefix}icetext
-│○ ${prefix}instagramgold
-│○ ${prefix}instagramsilver
-│○ ${prefix}lightningpubg
-│○ ${prefix}lovecard
-│○ ${prefix}lovelycute
-│○ ${prefix}masteryavatar
-│○ ${prefix}merrycard
-│○ ${prefix}messagecoffee
-│○ ${prefix}metalstar
-│○ ${prefix}milkcake
-│○ ${prefix}moderngold
-│○ ${prefix}moderngold2
-│○ ${prefix}moderngold3
-│○ ${prefix}moderngoldsilver
-│○ ${prefix}multicolor
-│○ ${prefix}nameonheart
-│○ ${prefix}noeltext
-│○ ${prefix}projectyasuo
-│○ ${prefix}pubgbirthday
-│○ ${prefix}pubgglicthvideo 
-│○ ${prefix}pubgmascotlogo
-│○ ${prefix}puppycute
-│○ ${prefix}realembroidery
-│○ ${prefix}retrotext
-│○ ${prefix}rosebirthday
-│○ ${prefix}shirtclub
-│○ ${prefix}snowontext
-│○ ${prefix}starsnight
-│○ ${prefix}summerbeach
-│○ ${prefix}sunglightshadow
-│○ ${prefix}textcakes
-│○ ${prefix}texthalloween
-│○ ${prefix}textonglass
-│○ ${prefix}textsky
-│○ ${prefix}thundertext
-│○ ${prefix}twittergold
-│○ ${prefix}twittersilver
-│○ ${prefix}viettel
-│○ ${prefix}vintagetelevision
-│○ ${prefix}watercolor2
-│○ ${prefix}womansday
-│○ ${prefix}writeblood
-│○ ${prefix}writegalaxy
-│○ ${prefix}writehorror
-│○ ${prefix}youtubegold
-│○ ${prefix}youtubesilver
-╰❒ ${prefix}zombie3d`
+│○ ${prefix}youtubegold 
+│○ ${prefix}youtubesilver 
+│○ ${prefix}facebookgold 
+│○ ${prefix}facebooksilver 
+│○ ${prefix}instagramgold 
+│○ ${prefix}instagramsilver 
+│○ ${prefix}twittergold 
+│○ ${prefix}twittersilver 
+│○ ${prefix}retro 
+│○ ${prefix}halloweenbats 
+│○ ${prefix}halloween 
+│○ ${prefix}cardhalloween 
+│○ ${prefix}birthdaycake 
+│○ ${prefix}thundertext 
+│○ ${prefix}icetext 
+│○ ${prefix}milkcake 
+│○ ${prefix}snowontext 
+│○ ${prefix}metalstar 
+│○ ${prefix}dragonfire 
+│○ ${prefix}zombie3d 
+│○ ${prefix}merrycard 
+│○ ${prefix}generalexam  
+│○ ${prefix}viettel 
+│○ ${prefix}embroider 
+│○ ${prefix}graffititext 
+│○ ${prefix}graffititext2 
+│○ ${prefix}graffititext3 
+│○ ${prefix}covergraffiti 
+│○ ${prefix}moderngold 
+│○ ${prefix}capercut 
+│○ ${prefix}lovecard 
+│○ ${prefix}heartflashlight 
+│○ ${prefix}heartcup 
+│○ ${prefix}sunglightshadow 
+│○ ${prefix}graffiti3d 
+│○ ${prefix}moderngoldsilver 
+│○ ${prefix}moderngold2 
+│○ ${prefix}moderngold3 
+│○ ${prefix}fabric 
+│○ ${prefix}masteryavatar 
+│○ ${prefix}messagecoffee 
+│○ ${prefix}announofwin 
+│○ ${prefix}writeblood 
+│○ ${prefix}horrorletter 
+│○ ${prefix}writehorror 
+│○ ${prefix}shirtclub 
+│○ ${prefix}angelwing 
+│○ ${prefix}christmasseason 
+│○ ${prefix}projectyasuo 
+│○ ${prefix}lovelycute 
+│○ ${prefix}womansday 
+│○ ${prefix}covergamepubg 
+│○ ${prefix}nameonheart 
+│○ ${prefix}funnyhalloween 
+│○ ${prefix}lightningpubg 
+│○ ${prefix}greetingcardvideo  
+│○ ${prefix}christmascard  
+│○ ${prefix}galaxybat 
+│○ ${prefix}writegalaxy 
+│○ ${prefix}starsnight 
+│○ ${prefix}noeltext 
+│○ ${prefix}textcakes 
+│○ ${prefix}pubgbirthday 
+│○ ${prefix}galaxywallpaper 
+│○ ${prefix}pubgglicthvideo  
+│○ ${prefix}pubgmascotlogo 
+│○ ${prefix}realembroidery 
+│○ ${prefix}vintagetelevision 
+│○ ${prefix}funnyanimations 
+│○ ${prefix}glowingtext 
+│○ ${prefix}textonglass 
+│○ ${prefix}cartoonstyle 
+│○ ${prefix}multicolor 
+│○ ${prefix}watercolor2 
+│○ ${prefix}textsky 
+│○ ${prefix}summerbeach 
+│○ ${prefix}1917text 
+│○ ${prefix}puppycute 
+│○ ${prefix}rosebirthday 
+│○ ${prefix}steellettering 
+│○ ${prefix}letterstext 
+│○ ${prefix}barcashirt 
+│○ ${prefix}premiercup 
+│○ ${prefix}stylepoligon 
+│○ ${prefix}lifebuoys 
+╰❒ ${prefix}juventusshirt `
 }
 
 exports.logomenu = (prefix) =>{
 	return`╭─❒ 「 Logo Menu 」
-│○ ${prefix}anonymous2
-│○ ${prefix}astronotspace
-│○ ${prefix}avatar3q360
-│○ ${prefix}avatarff
-│○ ${prefix}avatarleagueofking
-│○ ${prefix}avatarlolbyname
-│○ ${prefix}avataroverwatch
-│○ ${prefix}bannerofaov
-│○ ${prefix}bannerofaov2
-│○ ${prefix}bannerofapex
-│○ ${prefix}banneroffreefire
-│○ ${prefix}banneroflol
-│○ ${prefix}bannerofoverwatch
-│○ ${prefix}bannerofpubg
-│○ ${prefix}bannerytcsgo
-│○ ${prefix}beautifulgalaxylol
-│○ ${prefix}beautifulshimmering
-│○ ${prefix}blueneon
-│○ ${prefix}circlemarcotteam
-│○ ${prefix}colorfulpubg
-│○ ${prefix}companylogo
-│○ ${prefix}companylogo2
 │○ ${prefix}coverbannerlol
-│○ ${prefix}coverdota2
-│○ ${prefix}coverfblol
-│○ ${prefix}coverfreefirefb
-│○ ${prefix}coverleagueofking
-│○ ${prefix}coverloknew
-│○ ${prefix}coverofwarface
-│○ ${prefix}coveronepiecefb
-│○ ${prefix}crossfirecover
-│○ ${prefix}crossfirestyle
-│○ ${prefix}csgocover
-│○ ${prefix}cutegirlgamer
-│○ ${prefix}cyberhunterfb
+│○ ${prefix}pubglogomaker
+│○ ${prefix}colorfulpubg 
+│○ ${prefix}astronotspace
+│○ ${prefix}wallpaperaov
+│○ ${prefix}maketeamlogo
+│○ ${prefix}circlemarcotteam
+│○ ${prefix}wallpaperml
 │○ ${prefix}dragonballfb
+│○ ${prefix}bannerofaov 
 │○ ${prefix}effect3donbeach
-│○ ${prefix}elegantrotation
-│○ ${prefix}fbgamepubgcover
+│○ ${prefix}cutegirlgamer
 │○ ${prefix}footballteam
-│○ ${prefix}gaminglogo4fvs
-│○ ${prefix}gamingmascot
-│○ ${prefix}gradientlogo
-│○ ${prefix}gunlogogaming
+│○ ${prefix}beautifulshimmering
+│○ ${prefix}pubgcutelogo
+│○ ${prefix}elegantrotation
+│○ ${prefix}logogamingassasin
 │○ ${prefix}introvideomaker
-│○ ${prefix}letterlogos 
-│○ ${prefix}logoaccording 
-│○ ${prefix}logogamingassasin 
-│○ ${prefix}lolcoverbyname 
-│○ ${prefix}lolpentakill 
-│○ ${prefix}lolwallpaper 
-│○ ${prefix}maketeamlogo 
-│○ ${prefix}mascotstyle 
-│○ ${prefix}metalmascot 
+│○ ${prefix}gaminglogo4fvs
+│○ ${prefix}blueneon
+│○ ${prefix}metalmascot
+│○ ${prefix}anonymous2
+│○ ${prefix}lolpentakill
+│○ ${prefix}avatarleagueofking
+│○ ${prefix}avatarff
+│○ ${prefix}overwatchwallpaper
+│○ ${prefix}rovwallpaperhd
+│○ ${prefix}rovwallpaper
+│○ ${prefix}beautifulgalaxylol
+│○ ${prefix}crossfirecover 
+│○ ${prefix}lolwallpaper
+│○ ${prefix}coverdota2
+│○ ${prefix}coverleagueofking
+│○ ${prefix}avatar3q360
+│○ ${prefix}coverofwarface
 │○ ${prefix}newlolavatar 
+│○ ${prefix}csgocover
+│○ ${prefix}coverloknew
+│○ ${prefix}coverfblol 
 │○ ${prefix}overwatchcover 
-│○ ${prefix}overwatchwallpaper 
-│○ ${prefix}pencilsketch 
-│○ ${prefix}pubgcutelogo 
-│○ ${prefix}pubglogomaker 
-│○ ${prefix}rovwallpaper 
-│○ ${prefix}rovwallpaperhd 
+│○ ${prefix}crossfirestyle 
+│○ ${prefix}avatarlolbyname 
+│○ ${prefix}lolcoverbyname 
+│○ ${prefix}cyberhunterfb 
+│○ ${prefix}coverfreefirefb 
+│○ ${prefix}gamingmascot 
+│○ ${prefix}coveronepiecefb 
+│○ ${prefix}bannerytcsgo 
+│○ ${prefix}fbgamepubgcover 
+│○ ${prefix}banneroflol 
+│○ ${prefix}bannerofaov2 
 │○ ${prefix}teamlogo 
-│○ ${prefix}wallpaperaov 
-╰❒ ${prefix}wallpaperml 
+│○ ${prefix}companylogo2 
+│○ ${prefix}companylogo 
+│○ ${prefix}gradientlogo 
+│○ ${prefix}pencilsketch 
+│○ ${prefix}gunlogogaming 
+│○ ${prefix}banneroffreefire 
+│○ ${prefix}letterlogos 
+│○ ${prefix}bannerofoverwatch 
+│○ ${prefix}bannerofapex 
+│○ ${prefix}bannerofpubg 
+│○ ${prefix}mascotstyle 
+│○ ${prefix}logoaccording 
+╰❒ ${prefix}avataroverwatch 
 `
 }
 
 exports.islammenu = (prefix) =>{
 	return`╭─❒ 「 Islamic Menu 」
 │○ ${prefix}asmaulhusna
-│○ ${prefix}kisahnabi
+│○ ${prefix}kisahnabi 
 │○ ${prefix}jadwalshalat
 │○ ${prefix}randomquran
 │○ ${prefix}randomquran2
 │○ ${prefix}listsurah
-│○ ${prefix}tafsirsurah
+│○ ${prefix}tafsirsurah 
 ╰❒ ${prefix}alquranaudio 
 `
 }
@@ -2836,16 +2855,16 @@ exports.anonchat = (prefix) =>{
 │○ ${prefix}stopmenfess
 │○ ${prefix}anonymous 
 │○ ${prefix}start
-│○ ${prefix}skip 
-╰❒ ${prefix}stop
+│○ ${prefix}skip
+╰❒ ${prefix}stop 
 `
 }
 
 exports.storemenu = (prefix) =>{
 	return`╭─❒ 「 Store Menu 」
 │○ ${prefix}list
-│○ ${prefix}addlist
-│○ ${prefix}dellist 
+│○ ${prefix}addlist 
+│○ ${prefix}dellist
 │○ ${prefix}update 
 │○ ${prefix}store
 │○ ${prefix}kali
@@ -2885,6 +2904,7 @@ exports.voiceChange = (prefix) =>{
 ╰❒ ${prefix}tupai
 `
 }
+
 exports.storagemenu = (prefix) =>{
 	return`╭─❒ 「 Storage Menu 」
 │○ ${prefix}addvn
@@ -2922,8 +2942,8 @@ exports.rpgmenu = (prefix) =>{
 │○ ${prefix}transfer
 │○ ${prefix}slot
 │○ ${prefix}shop
-│○ ${prefix}profile
 │○ ${prefix}pasar
+│○ ${prefix}profile
 │○ ${prefix}ojek
 │○ ${prefix}open
 │○ ${prefix}nguli
@@ -2978,7 +2998,7 @@ exports.photooxy = (prefix)=>{
 │○ ${prefix}illuminated 
 │○ ${prefix}harry-potter2
 │○ ${prefix}birthday-cake 
-│○ ${prefix}embroidery
+│○ ${prefix}embroidery 
 │○ ${prefix}flaming 
 │○ ${prefix}furtext 
 │○ ${prefix}nightsky 
@@ -3011,6 +3031,7 @@ exports.photooxy = (prefix)=>{
 ╰❒ ${prefix}coffecup
 `
 }
+
 exports.soundmenu = (prefix) =>{
 return`╭─❒ 「 Sound Menu 」
 │○ ${prefix}sound1
@@ -3085,5 +3106,3 @@ return`╭─❒ 「 Sound Menu 」
 ╰❒ ${prefix}sound70
 `
 }
-
-
